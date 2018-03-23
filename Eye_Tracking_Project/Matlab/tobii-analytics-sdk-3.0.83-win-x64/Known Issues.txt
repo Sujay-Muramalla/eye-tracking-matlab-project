@@ -1,0 +1,24 @@
+---------------------------------------------------------------------------------
+This document lists the known issues with the 3.0 release of Tobii Analytics SDK.
+If you experience problems that might be related to these issues, please contact 
+Tobii Support to get assistance with solving your problems.
+---------------------------------------------------------------------------------
+
+- .Net sample precompiled files are not signed. This will cause a information dialog to appear on newer versions of Windows. 
+  We recommend that you select the option not to show this message again.
+
+- Path to Qt SDK might be erroneous on Mac OS X as directory structure have changed between versions of Qt. 
+  Please compare path defined in make file with your installation of Qt.
+
+- Naming conventions are not consistent in Python bindings.
+
+- In some dialogs of QtSample and EyetrackerBrowser, text is larger than text box (on Linux and Mac OSX).
+
+- EyetrackerBrowser executable for Windows is not signed. This will cause a information dialog to appear on newer versions of Windows. 
+  We recommend that you select the option not to show this message again.
+
+- On OS X, Eyetracker Browser does allow upgrade ET to the same FW version as already installed.  
+  
+- If you have many eyetrackers on the same network, listing of eyetrackers can be very slow on Mac OS X.
+
+- The calibration screen in "qteyetrackingsample" (C++ sample) should be shown in full screen - but is shown in windowed mode on Ubuntu 12.04.

@@ -1,0 +1,2100 @@
+>> a = [1 2 3]
+
+a =
+
+     1     2     3
+
+>> size(a)
+
+ans =
+
+     1     3
+
+>> a = [1 2 3 4 5]
+
+a =
+
+     1     2     3     4     5
+
+>> size(a)
+
+ans =
+
+     1     5
+
+>> a = [1 2 3 4 5; 6 7 8 9 10]
+
+a =
+
+     1     2     3     4     5
+     6     7     8     9    10
+
+>> size(a)
+
+ans =
+
+     2     5
+
+>> asize = size(a);
+>> asize
+
+asize =
+
+     2     5
+
+>> whos
+  Name       Size            Bytes  Class     Attributes
+
+  a          2x5                80  double              
+  ans        1x2                16  double              
+  asize      1x2                16  double              
+
+>> size(a,1)
+
+ans =
+
+     2
+
+>> size(a,2)
+
+ans =
+
+     5
+
+>> size(a,3)
+
+ans =
+
+     1
+
+>> size(a,100)
+
+ans =
+
+     1
+
+>> help size  
+ SIZE   Size of array.  
+    D = SIZE(X), for M-by-N matrix X, returns the two-element row vector
+    D = [M,N] containing the number of rows and columns in the matrix.
+    For N-D arrays, SIZE(X) returns a 1-by-N vector of dimension lengths.
+    Trailing singleton dimensions are ignored.
+ 
+    [M,N] = SIZE(X) for matrix X, returns the number of rows and columns in
+    X as separate output variables. 
+    
+    [M1,M2,M3,...,MN] = SIZE(X) for N>1 returns the sizes of the first N 
+    dimensions of the array X.  If the number of output arguments N does
+    not equal NDIMS(X), then for:
+ 
+    N > NDIMS(X), SIZE returns ones in the "extra" variables, i.e., outputs
+                  NDIMS(X)+1 through N.
+    N < NDIMS(X), MN contains the product of the sizes of dimensions N
+                  through NDIMS(X).
+ 
+    M = SIZE(X,DIM) returns the length of the dimension specified
+    by the scalar DIM.  For example, SIZE(X,1) returns the number
+    of rows. If DIM > NDIMS(X), M will be 1.
+ 
+    When SIZE is applied to a Java array, the number of rows
+    returned is the length of the Java array and the number of columns
+    is always 1.  When SIZE is applied to a Java array of arrays, the
+    result describes only the top level array in the array of arrays.
+ 
+    Example:
+    If
+       X = rand(2,3,4);
+    then
+       d = size(X)              returns  d = [2 3 4]
+       [m1,m2,m3,m4] = size(X)  returns  m1 = 2, m2 = 3, m3 = 4, m4 = 1
+       [m,n] = size(X)          returns  m = 2, n = 12
+       m2 = size(X,2)           returns  m2 = 3
+ 
+    See also LENGTH, NDIMS, NUMEL.
+
+    Overloaded methods:
+       timer/size
+       serial/size
+       tscollection/size
+       timeseries/size
+       gf/size
+       zpk/size
+       tf/size
+       ss/size
+       frd/size
+       distributed/size
+       fints/size
+       idmodel/size
+       idfrd/size
+       iddata/size
+       idnlmodel/size
+       idnlgrey/size
+       idnlfun/size
+       visa/size
+       udp/size
+       tcpip/size
+       icgroup/size
+       icdevice/size
+       gpib/size
+       mpc/size
+       uss/size
+       umat/size
+       ufrd/size
+       ndlft/size
+       icsignal/size
+       atom/size
+       dataset/size
+       categorical/size
+
+>> help length  
+ LENGTH   Length of vector.
+    LENGTH(X) returns the length of vector X.  It is equivalent
+    to MAX(SIZE(X)) for non-empty arrays and 0 for empty ones.
+   
+    See also NUMEL.
+
+    Overloaded methods:
+       timer/length
+       serial/length
+       tscollection/length
+       timeseries/length
+       gf/length
+       lti/length
+       distributed/length
+       qfft/length
+       fints/length
+       visa/length
+       udp/length
+       tcpip/length
+       icgroup/length
+       icdevice/length
+       gpib/length
+       umat/length
+       icsignal/length
+       atomlist/length
+       sgmltag/length
+       rptcp/length
+       dataset/length
+       categorical/length
+
+>> 
+>> 
+>> 
+>> a = [1 2 3 4 5 6];
+>> length(a)
+
+ans =
+
+     6
+
+>> 
+>> a = [1 2 3; 4 5 6]
+
+a =
+
+     1     2     3
+     4     5     6
+
+>> reshape(a,[6 1])
+
+ans =
+
+     1
+     4
+     2
+     5
+     3
+     6
+
+>> reshape(a,[1 6])
+
+ans =
+
+     1     4     2     5     3     6
+
+>> reshape(a,[3 2])
+
+ans =
+
+     1     5
+     4     3
+     2     6
+
+>> a = [1 2 3; 4 5 6]
+
+a =
+
+     1     2     3
+     4     5     6
+
+>> 
+>> 
+>> 
+>> 
+>> a(3,:) = 0      
+
+a =
+
+     1     2     3
+     4     5     6
+     0     0     0
+
+>> a = [1 2 3; 4 5 6]
+
+a =
+
+     1     2     3
+     4     5     6
+
+>> 
+>> a = [a; 0 0 0]
+
+a =
+
+     1     2     3
+     4     5     6
+     0     0     0
+
+>> a = [1 2 3; 4 5 6]
+
+a =
+
+     1     2     3
+     4     5     6
+
+>> b = zeros(3,3) 
+
+b =
+
+     0     0     0
+     0     0     0
+     0     0     0
+
+>> b([1 2],:) = a
+
+b =
+
+     1     2     3
+     4     5     6
+     0     0     0
+
+>> 
+>> 
+>> 
+>> 
+>> 
+>> a = [3 4 5 6 7; 10 11 12 13 14]
+
+a =
+
+     3     4     5     6     7
+    10    11    12    13    14
+
+>> 
+>> a'
+
+ans =
+
+     3    10
+     4    11
+     5    12
+     6    13
+     7    14
+
+>> permute(a,[2 1])
+
+ans =
+
+     3    10
+     4    11
+     5    12
+     6    13
+     7    14
+
+>> permute(a,[1 2])
+
+ans =
+
+     3     4     5     6     7
+    10    11    12    13    14
+
+>> a = repmat(1:10,[100 1])
+
+a =
+
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+
+>> a = repmat(1:10,[2 1])  
+
+a =
+
+     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10
+
+>> a = repmat(1:10,[2 2])
+
+a =
+
+     1     2     3     4     5     6     7     8     9    10     1     2     3     4     5     6     7     8     9    10
+     1     2     3     4     5     6     7     8     9    10     1     2     3     4     5     6     7     8     9    10
+
+>> 
+>> 
+>> 
+>> x = rand(10,5)
+
+x =
+
+    0.8147    0.1576    0.6557    0.7060    0.4387
+    0.9058    0.9706    0.0357    0.0318    0.3816
+    0.1270    0.9572    0.8491    0.2769    0.7655
+    0.9134    0.4854    0.9340    0.0462    0.7952
+    0.6324    0.8003    0.6787    0.0971    0.1869
+    0.0975    0.1419    0.7577    0.8235    0.4898
+    0.2785    0.4218    0.7431    0.6948    0.4456
+    0.5469    0.9157    0.3922    0.3171    0.6463
+    0.9575    0.7922    0.6555    0.9502    0.7094
+    0.9649    0.9595    0.1712    0.0344    0.7547
+
+>> xmn = mean(x,1)
+
+xmn =
+
+    0.6239    0.6602    0.5873    0.3978    0.5614
+
+>> xsd = std(x,[],1) 
+
+xsd =
+
+    0.3459    0.3308    0.2935    0.3607    0.2025
+
+>> x - xmn
+??? Error using ==> minus
+Matrix dimensions must agree.
+
+>> output = x - xmn
+??? Error using ==> minus
+Matrix dimensions must agree.
+
+>> whos
+  Name        Size            Bytes  Class     Attributes
+
+  a           2x20              320  double              
+  ans         2x5                80  double              
+  asize       1x2                16  double              
+  b           3x3                72  double              
+  x          10x5               400  double              
+  xmn         1x5                40  double              
+  xsd         1x5                40  double              
+
+>> x - repmat(xmn,[10 1])
+
+ans =
+
+    0.1909   -0.5026    0.0684    0.3082   -0.1226
+    0.2819    0.3104   -0.5516   -0.3660   -0.1798
+   -0.4969    0.2970    0.2618   -0.1209    0.2042
+    0.2895   -0.1748    0.3467   -0.3516    0.2338
+    0.0085    0.1401    0.0914   -0.3007   -0.3745
+   -0.5263   -0.5183    0.1704    0.4256   -0.0716
+   -0.3454   -0.2384    0.1558    0.2970   -0.1158
+   -0.0770    0.2555   -0.1951   -0.0807    0.0850
+    0.3337    0.1320    0.0682    0.5524    0.1480
+    0.3410    0.2993   -0.4161   -0.3634    0.1933
+
+>> (x - repmat(xmn,[10 1]))   ./   repmat(xsd,[10 1])
+
+ans =
+
+    0.5519   -1.5191    0.2332    0.8546   -0.6056
+    0.8152    0.9382   -1.8794   -1.0147   -0.8880
+   -1.4367    0.8976    0.8921   -0.3352    1.0083
+    0.8371   -0.5285    1.1813   -0.9750    1.1549
+    0.0246    0.4234    0.3115   -0.8337   -1.8495
+   -1.5218   -1.5667    0.5807    1.1802   -0.3536
+   -0.9986   -0.7207    0.5309    0.8235   -0.5718
+   -0.2226    0.7723   -0.6647   -0.2238    0.4196
+    0.9647    0.3990    0.2323    1.5316    0.7309
+    0.9861    0.9046   -1.4178   -1.0075    0.9548
+
+>> bsxfun(-,x,xmn)                                   
+??? bsxfun(-,x,xmn)
+            |
+Error: Expression or statement is incorrect--possibly unbalanced (, {, or [.
+
+>> bsxfun(@rdivide,bsxfun(@minus,x,xmn),xsd)      
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> a = rand(1,10)
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626    0.1190    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> a(5) = 0;
+>> 
+>> 
+>> a
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626         0    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> a > 0
+
+ans =
+
+     1     1     1     1     0     1     1     1     1     1
+
+>> a == 0
+
+ans =
+
+     0     0     0     0     1     0     0     0     0     0
+
+>> find(a == 0)
+
+ans =
+
+     5
+
+>> a > .5
+
+ans =
+
+     0     1     1     0     0     0     1     0     1     0
+
+>> find(a > .5)
+
+ans =
+
+     2     3     7     9
+
+>> a == 1231234
+
+ans =
+
+     0     0     0     0     0     0     0     0     0     0
+
+>> a == 0.2760
+
+ans =
+
+     0     0     0     0     0     0     0     0     0     0
+
+>> a
+>> a == a(1)
+
+ans =
+
+     1     0     0     0     0     0     0     0     0     0
+
+>> a
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626         0    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> a(1)
+
+ans =
+
+    0.2760
+
+>> format long g;
+>> a(1)
+
+ans =
+
+         0.276025076998578
+
+>> a
+
+a =
+
+  Columns 1 through 5
+
+         0.276025076998578         0.679702676853675         0.655098003973841         0.162611735194631                         0
+
+  Columns 6 through 10
+
+         0.498364051982143         0.959743958516081         0.340385726666133         0.585267750979777         0.223811939491137
+
+>> format short
+>> a
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626         0    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> a       
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626         0    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> 
+>> a 
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626         0    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> 
+>> fprintf('%.10f',a(1))
+0.2760250770>> 
+>> fprintf('%.100f',a(1))
+0.2760250769985783669824286334915086627006530761718750000000000000000000000000000000000000000000000000>> 
+>> 
+>> a
+
+a =
+
+    0.2760    0.6797    0.6551    0.1626         0    0.4984    0.9597    0.3404    0.5853    0.2238
+
+>> 
+>> 
+>> (a > 0.275)   &   (a < 0.277) 
+
+ans =
+
+     1     0     0     0     0     0     0     0     0     0
+
+>> abs(a - .276) < .001
+
+ans =
+
+     1     0     0     0     0     0     0     0     0     0
+
+>> round(1000*a)/1000
+
+ans =
+
+    0.2760    0.6800    0.6550    0.1630         0    0.4980    0.9600    0.3400    0.5850    0.2240
+
+>> ans==0.276
+
+ans =
+
+     1     0     0     0     0     0     0     0     0     0
+
+>>  
+>> 
+>> 
+>> 
+>> a = randn(10,5)
+
+a =
+
+   -0.4326   -0.1867    0.2944   -0.3999   -1.6041
+   -1.6656    0.7258   -1.3362    0.6900    0.2573
+    0.1253   -0.5883    0.7143    0.8156   -1.0565
+    0.2877    2.1832    1.6236    0.7119    1.4151
+   -1.1465   -0.1364   -0.6918    1.2902   -0.8051
+    1.1909    0.1139    0.8580    0.6686    0.5287
+    1.1892    1.0668    1.2540    1.1908    0.2193
+   -0.0376    0.0593   -1.5937   -1.2025   -0.9219
+    0.3273   -0.0956   -1.4410   -0.0198   -2.1707
+    0.1746   -0.8323    0.5711   -0.1567   -0.0592
+
+>> min(a,[],1)
+
+ans =
+
+   -1.6656   -0.8323   -1.5937   -1.2025   -2.1707
+
+>> b = randn(10,5);
+>> 
+>> 
+>> min(a,b)
+
+ans =
+
+   -1.0106   -0.1867    0.2944   -0.3999   -1.6041
+   -1.6656   -0.3179   -1.3362    0.6900    0.0880
+    0.1253   -0.5883   -0.3775    0.8156   -1.0565
+    0.2877   -1.8740   -0.2959   -0.9921   -0.5596
+   -1.1465   -0.1364   -1.4751    0.2120   -0.8051
+   -0.6436    0.1139   -0.2340    0.2379   -0.9499
+    0.3803    0.7310    0.1184   -1.0078    0.2193
+   -1.0091    0.0593   -1.5937   -1.2025   -0.9219
+   -0.0195   -0.0956   -1.4410   -0.0198   -2.1707
+   -0.0482   -0.8323   -0.3510   -0.1567   -0.2656
+
+>> max(a,[],1)
+
+ans =
+
+    1.1909    2.1832    1.6236    1.2902    1.4151
+
+>> a
+
+a =
+
+   -0.4326   -0.1867    0.2944   -0.3999   -1.6041
+   -1.6656    0.7258   -1.3362    0.6900    0.2573
+    0.1253   -0.5883    0.7143    0.8156   -1.0565
+    0.2877    2.1832    1.6236    0.7119    1.4151
+   -1.1465   -0.1364   -0.6918    1.2902   -0.8051
+    1.1909    0.1139    0.8580    0.6686    0.5287
+    1.1892    1.0668    1.2540    1.1908    0.2193
+   -0.0376    0.0593   -1.5937   -1.2025   -0.9219
+    0.3273   -0.0956   -1.4410   -0.0198   -2.1707
+    0.1746   -0.8323    0.5711   -0.1567   -0.0592
+
+>> sum(a,2)
+
+ans =
+
+   -2.3288
+   -1.3287
+    0.0105
+    6.2215
+   -1.4895
+    3.3602
+    4.9201
+   -3.6964
+   -3.3998
+   -0.3025
+
+>> sum(sum(a,1),2)
+
+ans =
+
+    1.9666
+
+>> sum( a(:) )
+
+ans =
+
+    1.9666
+
+>> a(:)
+
+ans =
+
+   -0.4326
+   -1.6656
+    0.1253
+    0.2877
+   -1.1465
+    1.1909
+    1.1892
+   -0.0376
+    0.3273
+    0.1746
+   -0.1867
+    0.7258
+   -0.5883
+    2.1832
+   -0.1364
+    0.1139
+    1.0668
+    0.0593
+   -0.0956
+   -0.8323
+    0.2944
+   -1.3362
+    0.7143
+    1.6236
+   -0.6918
+    0.8580
+    1.2540
+   -1.5937
+   -1.4410
+    0.5711
+   -0.3999
+    0.6900
+    0.8156
+    0.7119
+    1.2902
+    0.6686
+    1.1908
+   -1.2025
+   -0.0198
+   -0.1567
+   -1.6041
+    0.2573
+   -1.0565
+    1.4151
+   -0.8051
+    0.5287
+    0.2193
+   -0.9219
+   -2.1707
+   -0.0592
+
+>> a
+
+a =
+
+   -0.4326   -0.1867    0.2944   -0.3999   -1.6041
+   -1.6656    0.7258   -1.3362    0.6900    0.2573
+    0.1253   -0.5883    0.7143    0.8156   -1.0565
+    0.2877    2.1832    1.6236    0.7119    1.4151
+   -1.1465   -0.1364   -0.6918    1.2902   -0.8051
+    1.1909    0.1139    0.8580    0.6686    0.5287
+    1.1892    1.0668    1.2540    1.1908    0.2193
+   -0.0376    0.0593   -1.5937   -1.2025   -0.9219
+    0.3273   -0.0956   -1.4410   -0.0198   -2.1707
+    0.1746   -0.8323    0.5711   -0.1567   -0.0592
+
+>> a(1)
+
+ans =
+
+   -0.4326
+
+>> a(2)
+
+ans =
+
+   -1.6656
+
+>> a(1:10)
+
+ans =
+
+   -0.4326   -1.6656    0.1253    0.2877   -1.1465    1.1909    1.1892   -0.0376    0.3273    0.1746
+
+>> a(1:11)
+
+ans =
+
+   -0.4326   -1.6656    0.1253    0.2877   -1.1465    1.1909    1.1892   -0.0376    0.3273    0.1746   -0.1867
+
+>> a(1:50)
+
+ans =
+
+  Columns 1 through 14
+
+   -0.4326   -1.6656    0.1253    0.2877   -1.1465    1.1909    1.1892   -0.0376    0.3273    0.1746   -0.1867    0.7258   -0.5883    2.1832
+
+  Columns 15 through 28
+
+   -0.1364    0.1139    1.0668    0.0593   -0.0956   -0.8323    0.2944   -1.3362    0.7143    1.6236   -0.6918    0.8580    1.2540   -1.5937
+
+  Columns 29 through 42
+
+   -1.4410    0.5711   -0.3999    0.6900    0.8156    0.7119    1.2902    0.6686    1.1908   -1.2025   -0.0198   -0.1567   -1.6041    0.2573
+
+  Columns 43 through 50
+
+   -1.0565    1.4151   -0.8051    0.5287    0.2193   -0.9219   -2.1707   -0.0592
+
+>> 
+>> 
+>> a(:)   
+
+ans =
+
+   -0.4326
+   -1.6656
+    0.1253
+    0.2877
+   -1.1465
+    1.1909
+    1.1892
+   -0.0376
+    0.3273
+    0.1746
+   -0.1867
+    0.7258
+   -0.5883
+    2.1832
+   -0.1364
+    0.1139
+    1.0668
+    0.0593
+   -0.0956
+   -0.8323
+    0.2944
+   -1.3362
+    0.7143
+    1.6236
+   -0.6918
+    0.8580
+    1.2540
+   -1.5937
+   -1.4410
+    0.5711
+   -0.3999
+    0.6900
+    0.8156
+    0.7119
+    1.2902
+    0.6686
+    1.1908
+   -1.2025
+   -0.0198
+   -0.1567
+   -1.6041
+    0.2573
+   -1.0565
+    1.4151
+   -0.8051
+    0.5287
+    0.2193
+   -0.9219
+   -2.1707
+   -0.0592
+
+>> sum( a(:) )
+
+ans =
+
+    1.9666
+
+>> a
+
+a =
+
+   -0.4326   -0.1867    0.2944   -0.3999   -1.6041
+   -1.6656    0.7258   -1.3362    0.6900    0.2573
+    0.1253   -0.5883    0.7143    0.8156   -1.0565
+    0.2877    2.1832    1.6236    0.7119    1.4151
+   -1.1465   -0.1364   -0.6918    1.2902   -0.8051
+    1.1909    0.1139    0.8580    0.6686    0.5287
+    1.1892    1.0668    1.2540    1.1908    0.2193
+   -0.0376    0.0593   -1.5937   -1.2025   -0.9219
+    0.3273   -0.0956   -1.4410   -0.0198   -2.1707
+    0.1746   -0.8323    0.5711   -0.1567   -0.0592
+
+>> sum(a,2)
+
+ans =
+
+   -2.3288
+   -1.3287
+    0.0105
+    6.2215
+   -1.4895
+    3.3602
+    4.9201
+   -3.6964
+   -3.3998
+   -0.3025
+
+>> temp = sum(a,2)
+
+temp =
+
+   -2.3288
+   -1.3287
+    0.0105
+    6.2215
+   -1.4895
+    3.3602
+    4.9201
+   -3.6964
+   -3.3998
+   -0.3025
+
+>> temp(3:4)
+
+ans =
+
+    0.0105
+    6.2215
+
+>>      
+>> 
+>> 
+>> 1:10
+
+ans =
+
+     1     2     3     4     5     6     7     8     9    10
+
+>> 1: 2 : 5
+
+ans =
+
+     1     3     5
+
+>> 1:2:5.5
+
+ans =
+
+     1     3     5
+
+>> 1: 1.1 : 100
+
+ans =
+
+  Columns 1 through 14
+
+    1.0000    2.1000    3.2000    4.3000    5.4000    6.5000    7.6000    8.7000    9.8000   10.9000   12.0000   13.1000   14.2000   15.3000
+
+  Columns 15 through 28
+
+   16.4000   17.5000   18.6000   19.7000   20.8000   21.9000   23.0000   24.1000   25.2000   26.3000   27.4000   28.5000   29.6000   30.7000
+
+  Columns 29 through 42
+
+   31.8000   32.9000   34.0000   35.1000   36.2000   37.3000   38.4000   39.5000   40.6000   41.7000   42.8000   43.9000   45.0000   46.1000
+
+  Columns 43 through 56
+
+   47.2000   48.3000   49.4000   50.5000   51.6000   52.7000   53.8000   54.9000   56.0000   57.1000   58.2000   59.3000   60.4000   61.5000
+
+  Columns 57 through 70
+
+   62.6000   63.7000   64.8000   65.9000   67.0000   68.1000   69.2000   70.3000   71.4000   72.5000   73.6000   74.7000   75.8000   76.9000
+
+  Columns 71 through 84
+
+   78.0000   79.1000   80.2000   81.3000   82.4000   83.5000   84.6000   85.7000   86.8000   87.9000   89.0000   90.1000   91.2000   92.3000
+
+  Columns 85 through 91
+
+   93.4000   94.5000   95.6000   96.7000   97.8000   98.9000  100.0000
+
+>> 10: -1 : 1
+
+ans =
+
+    10     9     8     7     6     5     4     3     2     1
+
+>> 10:-1:1   
+
+ans =
+
+    10     9     8     7     6     5     4     3     2     1
+
+>> rand(1,10)
+
+ans =
+
+    0.7513    0.2551    0.5060    0.6991    0.8909    0.9593    0.5472    0.1386    0.1493    0.2575
+
+>> randn(1,10)
+
+ans =
+
+   -1.1878   -2.2023    0.9863   -0.5186    0.3274    0.2341    0.0215   -1.0039   -0.9471   -0.3744
+
+>> 
+>> 
+>> 
+>> a = 10;
+>> 
+>> 
+>> fprintf('The answer is %d',a)
+The answer is 10>> 
+>> 
+>> 
+>> 
+>> sprintf('The answer is %d',a)
+
+ans =
+
+The answer is 10
+
+>> str = sprintf('The answer is %d',a)
+
+str =
+
+The answer is 10
+
+>> str = sprintf('The answer is %.10f',a)
+
+str =
+
+The answer is 10.0000000000
+
+>> str = sprintf('The answer is %.3f',a) 
+
+str =
+
+The answer is 10.000
+
+>> str = sprintf('The answer is %.3f',pi)
+
+str =
+
+The answer is 3.142
+
+>> str = sprintf('The answer is %d',pi)  
+
+str =
+
+The answer is 3.141593e+00
+
+>> str = sprintf('The answer is %g',pi)
+
+str =
+
+The answer is 3.14159
+
+>> str = sprintf('The answer is %n',pi)
+
+str =
+
+The answer is 
+
+>> str = sprintf('The answer is %n',pi)
+>> help sprintf
+ SPRINTF Write formatted data to string.
+    [S,ERRMSG] = SPRINTF(FORMAT,A,...) formats the data in the real
+    part of array A (and in any additional array arguments), under
+    control of the specified FORMAT string, and returns it in the
+    MATLAB string variable S. ERRMSG is an optional output argument
+    that returns an error message string if an error occurred or an
+    empty string if an error did not occur. SPRINTF is the same as
+    FPRINTF except that it returns the data in a MATLAB string
+    variable rather than writing it to a file.
+ 
+    FORMAT is a string containing C language conversion specifications.
+    Conversion specifications involve the character %, optional flags,
+    optional width and precision fields, optional subtype specifier, and
+    conversion characters d, i, o, u, x, X, f, e, E, g, G, c, and s.
+    See the Language Reference Guide or a C manual for complete details.
+ 
+    The special formats \n,\r,\t,\b,\f can be used to produce linefeed,
+    carriage return, tab, backspace, and formfeed characters respectively.
+    Use \\ to produce a backslash character and %% to produce the percent
+    character.
+ 
+    SPRINTF behaves like ANSI C with certain exceptions and extensions.
+    These include:
+    1. ANSI C requires an integer cast of a double argument to correctly
+       use an integer conversion specifier like d. A similar conversion
+       is required when using such a specifier with non-integral MATLAB
+       values. Use FIX, FLOOR, CEIL or ROUND on a double argument to
+       explicitly convert non-integral MATLAB values to integral values
+       if you plan to use an integer conversion specifier like d.
+       Otherwise, any non-integral MATLAB values will be outputted using
+       the format where the integer conversion specifier letter has been
+       replaced by e.
+    2. The following non-standard subtype specifiers are supported for
+       conversion characters o, u, x, and X.
+       t    - The underlying C datatype is a float rather than an
+              unsigned integer.
+       b    - The underlying C datatype is a double rather than an
+              unsigned integer.
+       For example, to print out in hex a double value use a format like
+       '%bx'.
+    3. SPRINTF is "vectorized" for the case when A is nonscalar. The
+       format string is recycled through the elements of A (columnwise)
+       until all the elements are used up. It is then recycled in a similar
+       manner through any additional array arguments.
+ 
+    See the reference page in the online help for other exceptions, 
+    extensions, or platform-specific behavior.
+ 
+    Examples
+       sprintf('%0.5g',(1+sqrt(5))/2)       1.618
+       sprintf('%0.5g',1/eps)               4.5036e+15       
+       sprintf('%15.5f',1/eps)              4503599627370496.00000
+       sprintf('%d',round(pi))              3
+       sprintf('%s','hello')                hello
+       sprintf('The array is %dx%d.',2,3)   The array is 2x3.
+       sprintf('\n') is the line termination character on all platforms.
+ 
+    See also FPRINTF, SSCANF, NUM2STR, INT2STR.
+
+    Overloaded methods:
+       sgmltag/sprintf
+
+>> str = sprintf('The answer is %d',round(pi))
+
+str =
+
+The answer is 3
+
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> clear all
+>> whos
+>> clc
+>> help clc
+ CLC    Clear command window.
+    CLC clears the command window and homes the cursor.
+ 
+    See also HOME.
+
+>> clc
+
+>> x = randn(1,100);
+>> y = randn(1,100);
+>> whos
+  Name      Size             Bytes  Class     Attributes
+
+  x         1x100              800  double              
+  y         1x100              800  double              
+
+>> 
+>> 
+>> figure;
+>> figure;
+>> close;
+>> figure;
+>> close(2)
+>> scatter(x,y);
+>> type scatter
+
+function hh = scatter(varargin)
+%SCATTER Scatter/bubble plot.
+%   SCATTER(X,Y,S,C) displays colored circles at the locations specified
+%   by the vectors X and Y (which must be the same size).  
+%
+%   S determines the area of each marker (in points^2). S can be a
+%   vector the same length a X and Y or a scalar. If S is a scalar, 
+%   MATLAB draws all the markers the same size. If S is empty, the
+%   default size is used.
+%   
+%   C determines the colors of the markers. When C is a vector the
+%   same length as X and Y, the values in C are linearly mapped
+%   to the colors in the current colormap. When C is a 
+%   length(X)-by-3 matrix, it directly specifies the colors of the  
+%   markers as RGB values. C can also be a color string. See ColorSpec.
+%
+%   SCATTER(X,Y) draws the markers in the default size and color.
+%   SCATTER(X,Y,S) draws the markers at the specified sizes (S)
+%   with a single color. This type of graph is also known as
+%   a bubble plot.
+%   SCATTER(...,M) uses the marker M instead of 'o'.
+%   SCATTER(...,'filled') fills the markers.
+%
+%   SCATTER(AX,...) plots into AX instead of GCA.
+%
+%   H = SCATTER(...) returns handles to the scatter objects created.
+%
+%   Use PLOT for single color, single marker size scatter plots.
+%
+%   Example
+%     load seamount
+%     scatter(x,y,5,z)
+%
+%   See also SCATTER3, PLOT, PLOTMATRIX.
+
+%   Copyright 1984-2007 The MathWorks, Inc. 
+%   $Revision: 1.8.4.17 $
+
+[v6,args] = usev6plotapi(varargin{:},'-mfilename',mfilename);
+if v6
+  h = Lscatterv6(args{:});
+else
+  [cax,args,nargs] = axescheck(args{:});
+  error(nargchk(1,inf,nargs,'struct'));
+  [pvpairs,args,nargs,msg] = parseargs(args);
+  error(msg); %#ok
+  error(nargchk(2,4,nargs,'struct'));
+
+  dataargs = datachk(args(1:nargs));
+   
+  switch (nargs)
+    case 2
+      [x,y] = deal(dataargs{:});
+      error(Lxychk(x,y)); %#ok
+      [cax,parax] = localGetAxesInfo(cax);
+      [ls,c,m] = nextstyle(cax); %#ok
+      error(Lcchk(x,c));  %#ok
+      s = get(cax,'defaultlinemarkersize')^2;
+    case 3
+      [x,y,s] = deal(dataargs{:});
+      error(Lxychk(x,y));  %#ok
+      error(Lschk(x,s));  %#ok
+      [cax,parax] = localGetAxesInfo(cax);
+      [ls,c,m] = nextstyle(cax); %#ok
+      error(Lcchk(x,c));  %#ok
+    case 4
+      [x,y,s,c] = deal(dataargs{:});
+      error(Lxychk(x,y));  %#ok
+      error(Lschk(x,s));  %#ok
+      if ischar(args{nargs}), c = args{nargs}; end
+      error(Lcchk(x,c));  %#ok
+      [cax,parax] = localGetAxesInfo(cax);
+  end
+
+  if isempty(s), s = 36; end
+
+  h = specgraph.scattergroup('parent',parax,'cdata',c,...
+                             'xdata',x,...
+                             'ydata',y,...
+                             'sizedata',s,...
+                             pvpairs{:});
+  set(h,'refreshmode','auto');
+  plotdoneevent(cax,h);
+  h = double(h);
+end
+
+if nargout>0, hh = h; end
+
+%--------------------------------------------------------------------------
+function [cax,parax] = localGetAxesInfo(cax)
+
+if isempty(cax) || isa(handle(cax),'hg.axes') 
+    cax = newplot(cax);
+    parax = cax;
+else
+    parax = cax;
+    cax = ancestor(cax,'Axes');
+end
+
+%--------------------------------------------------------------------------
+
+function h = Lscatterv6(varargin)
+[cax,args,nargs] = axescheck(varargin{:});
+error(nargchk(2,6,nargs,'struct'))
+
+cax = newplot(cax);
+filled = 0;
+marker = '';
+c = '';
+
+% Parse optional trailing arguments (in any order)
+nin = nargs;
+while nin > 0 && ischar(args{nin})
+    if strcmp(args{nin},'filled'),
+        filled = 1;
+    else
+        [l,ctmp,m,msg] = colstyle(args{nin}); %#ok
+        error(msg); %#ok
+        if ~isempty(m), marker = m; end
+        if ~isempty(ctmp), c = ctmp; end
+    end
+    nin = nin-1;
+end
+if isempty(marker), marker = 'o'; end
+co = get(cax,'colororder');
+
+switch nin
+case 2  % scatter(x,y)
+    x = args{1};
+    y = args{2};
+    if isempty(c),
+        c = co(1,:);
+    end
+    s = get(cax,'defaultlinemarkersize')^2;
+case 3 % scatter(x,y,s)
+    [x,y,s] = deal(args{1:3});
+    if isempty(c),
+        c = co(1,:);
+    end
+case 4  % scatter(x,y,s,c)
+    [x,y,s,c] = deal(args{1:4});
+otherwise
+    error(id('InvalidInput'),'Wrong number of input arguments.');
+end
+
+if length(x) ~= length(y) || ...
+        length(x) ~= numel(x) || length(y) ~= numel(y)
+    error(id('InvalidData'),'X and Y must be vectors of the same length.');
+end
+
+% Map colors into colormap colors if necessary.  Reshape so as to
+% make the loop below easier to follow
+[color, scaled] = MapColorsToColorMap(x, c);
+colorSize = size(color);
+if isequal(colorSize,[1 3]) || ischar(color),
+    color = repmat(color,length(x),1);
+elseif any(colorSize == 1),
+    color = color(:);
+end
+
+% Scalar expand the marker size if necessary
+if length(s)==1, 
+    s = repmat(s,length(x),1); 
+elseif length(s)~=numel(s) || length(s)~=length(x)
+    error(id('InvalidSData'),'S must be a scalar or a vector the same length as X.')
+end
+
+% Now draw the plot, one patch per point.
+% keeping track of scatter groups for legend
+if isappdata(cax,'scattergroup');
+    scattergroup=getappdata(cax,'scattergroup') + 1;
+else
+    scattergroup = 1;
+end
+setappdata(cax,'scattergroup',scattergroup);
+
+% create an invisible handle invisible axes for temporary parent
+fig = ancestor(cax,'figure');
+curax = get(fig,'currentaxes');
+tax = axes('parent',fig,'visible','off','handlevisibility','off');
+h = -1; h = h(ones(length(x),1));
+for i=1:length(x),
+    h(i) = patch('parent',tax,'xdata',x(i),'ydata',y(i),...
+                 'linestyle','none','facecolor','none',...
+                 'markersize',sqrt(s(i)), ...
+                 'marker',marker);
+    % set scatter group for patch
+    setappdata(h(i),'scattergroup',scattergroup); 
+    
+    if scaled,
+        set(h(i),'cdata',color(i,:),'edgecolor','flat','markerfacecolor','flat');
+    else
+        set(h(i),'edgecolor',color(i,:),'markerfacecolor',color(i,:));
+    end
+    if ~filled,
+        set(h(i),'markerfacecolor','none');
+    end
+end
+set(h,'parent',cax);
+delete(tax);
+set(fig,'currentaxes',curax);
+
+%--------------------------------------------------------------------------
+
+function [pvpairs,args,nargs,msg] = parseargs(args)
+msg = '';
+% separate pv-pairs from opening arguments
+[args,pvpairs] = parseparams(args);
+n = 1;
+extrapv = {};
+% check for 'filled' or LINESPEC or ColorSpec
+while length(pvpairs) >= 1 && n < 4 && ischar(pvpairs{1})
+  arg = lower(pvpairs{1});
+  if arg(1) == 'f'
+    pvpairs(1) = [];
+    extrapv = {'MarkerFaceColor','flat','MarkerEdgeColor','none', ...
+               extrapv{:}};
+  else
+    [l,c,m,tmsg]=colstyle(pvpairs{1});
+    if isempty(tmsg)
+      pvpairs(1) = [];
+      if ~isempty(l) 
+        extrapv = {'LineStyle',l,extrapv{:}};
+      end
+      if ~isempty(c)
+        extrapv = {'CData',ColorSpecToRGB(c),extrapv{:}};
+      end
+      if ~isempty(m)
+        extrapv = {'Marker',m,extrapv{:}};
+      end
+    end
+  end
+  n = n+1;
+end
+pvpairs = [extrapv pvpairs];
+if isempty(args)
+  msg.message = 'Must supply X and Y data as first arguments.';
+  msg.identifier = id('NoDataInputs');
+else
+  msg = checkpvpairs(pvpairs);
+end
+nargs = length(args);
+
+%--------------------------------------------------------------------------
+
+function color = ColorSpecToRGB(s)
+color=[];
+switch s
+ case 'y'
+  color = [1 1 0];
+ case 'm'
+  color = [1 0 1];
+ case 'c'
+  color = [0 1 1];
+ case 'r'
+  color = [1 0 0];
+ case 'g'
+  color = [0 1 0];
+ case 'b'
+  color = [0 0 1];
+ case 'w'
+  color = [1 1 1];
+ case 'k'
+  color = [0 0 0];
+end
+
+%--------------------------------------------------------------------------
+
+function [colorMap, scaled] = MapColorsToColorMap(x,c)
+% Map colors into colormap colors if necessary.
+
+scaled = false;
+if ischar(c) || isequal(size(c),[1 3]); % string color or scalar rgb
+    colorMap = c;
+elseif length(c)==numel(c) && length(c)==length(x), % is C a vector?
+    scaled = true;
+    colorMap = c;
+elseif isequal(size(c),[length(x) 3]), % vector of rgb's
+    colorMap = c;
+else
+    error(id('InvalidCData'),...
+    'C must be a single color, a vector the same length as X, or an M-by-3 matrix.')
+end
+
+%--------------------------------------------------------------------------
+function msg = Lxychk(x,y)
+msg = [];
+% Verify {X,Y) data is correct size
+if any([length(x) length(y) ...
+        numel(x) numel(y) ] ~= length(x))
+    msg = struct('identifier',id('InvalidXYData'),...
+                 'message','X and Y must be vectors of the same length.');
+end
+
+ %--------------------------------------------------------------------------
+function msg = Lcchk(x,c)
+msg = [];
+% Verify CData is correct size
+if ischar(c) || isequal(size(c),[1 3]); 
+    % string color or scalar rgb 
+elseif length(c)==numel(c) && length(c)==length(x)
+    % C is a vector
+elseif isequal(size(c),[length(x) 3]), 
+    % vector of rgb's
+else
+    msg = struct('identifier',id('InvalidCData'),...
+                 'message',['C must be a single color, a vector the same length as X, ',...
+           'or an M-by-3 matrix.']);
+end
+
+%--------------------------------------------------------------------------
+function msg = Lschk(x,s)
+msg = [];
+% Verify correct S vector
+if length(s) > 1 && ...
+              (length(s)~=numel(s) || length(s)~=length(x))
+    msg = struct('identifier',id('InvalidSData'),...
+                 'message','S must be a scalar or a vector the same length as X.');
+end
+
+%--------------------------------------------------------------------------
+function str = id(str)
+str = ['MATLAB:scatter:' str];
+
+
+
+
+>> 
+>> 
+>> 
+>> clc
+
+>> scatter(x,y);
+>> 
+>> scatter(x,y,'ro');
+>> scatter(x,y,'r.');
+>> scatter(x,y,'rx');
+>> scatter(x,y,'go');
+>> scatter(x,y,'g+');
+>> plot([-2.5 2.5],[-1 2])
+>> 
+>> 
+>> scatter(x,y,'g+');
+>> hold on
+>> plot([-2.5 2.5],[-1 2])
+>> plot([-2.5 2.5],[-1 2],'r-')
+>> plot([-2.5 2.5],[-1 2],'r--')
+>> plot([-2.5 2.5],[-1 2],'g--')
+>> close
+>> figure;
+>> scatter(x,y,'g+');
+>> 
+>> clf
+>> scatter(x,y,'g+');
+>> plot([-2.5 2.5],[-1 2],'r--')
+>>     
+>> clf
+>> 
+>> 
+>> hold on;
+>> scatter(x,y,'g+');
+>> plot([-2.5 2.5],[-1 2],'r--')
+>> xlabel('this is the x axis')
+>> ylabel('this is the y axis');
+>> title('my data')
+>> val = corr(x,y);
+>> val
+
+val =
+
+  Columns 1 through 23
+
+   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN
+   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN
+(...)
+
+
+>> clf
+>> val = corr(x(:),y(:));
+>> val
+
+val =
+
+    0.0075
+
+>> title(sprintf('my data (r = %.4f)',val))
+>> axis([-2.5 2.5  -2.5 4])
+>> ax = axis;
+>> ax
+
+ax =
+
+   -2.5000    2.5000   -2.5000    4.0000
+
+>> 
+>> 
+>> 
+>> x = randn(2,100);
+>> y = randn(2,100);
+>> 
+>> 
+>> 
+>> figure; hold on; scatter(x(1,:),y(1,:),'ro');
+>> scatter(x(2,:),y(2,:),'go');
+>> clf;
+>> hold on;
+>> hold on;
+>> group1 = scatter(x(1,:),y(1,:),'ro');
+>> group1
+
+group1 =
+
+  172.0093
+
+>> group2 = scatter(x(2,:),y(2,:),'go');
+>> group2
+
+group2 =
+
+  273.0093
+
+>> legend([group1 group2],{'Group 1' 'Group 2'})
+>> ['Group 1' 'Group 2']
+
+ans =
+
+Group 1Group 2
+
+>> {'Group 1' 'Group 2'}
+
+ans = 
+
+    'Group 1'    'Group 2'
+
+>>    
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> params = polyfit(x(1,:),y(1,:),1) 
+
+params =
+
+    0.0669    0.0289
+
+>> params1 = polyfit(x(1,:),y(1,:),1)
+
+params1 =
+
+    0.0669    0.0289
+
+>> params2 = polyfit(x(2,:),y(2,:),1)
+
+params2 =
+
+    0.1359   -0.0363
+
+>> y = 0.0669 * x + 0.0289
+>> 
+>> 
+>> xcoord = [-10 10];
+>> ycoord = params1(1) * xcoord + params1(2);
+>> plot(xcoord,ycoord,'r-')
+>> axis([-3 3 -3 3])
+>> help regressl
+No completions found.
+>> help regressl
+No completions found.
+>> help regressfi
+No completions found.
+>> help regressfi
+No completions found.
+>>               
+>> 
+>> xcoord = [-1 1];  
+>> ycoord = params1(1) * xcoord + params1(2);
+>> plot(xcoord,ycoord,'g-')
+>> plot(xcoord,ycoord,'g-','LineWidth',5) 
+>> group1
+
+group1 =
+
+  172.0093
+
+>> 
+>> 
+>> 
+>> get(group1)
+            Annotation: [1x1 hg.Annotation]
+           DisplayName: 'Group 1'
+             EraseMode: 'normal'
+           HitTestArea: 'off'
+          BeingDeleted: 'off'
+         ButtonDownFcn: []
+              Children: [100x1 double]
+              Clipping: 'on'
+             CreateFcn: []
+             DeleteFcn: []
+            BusyAction: 'queue'
+      HandleVisibility: 'on'
+               HitTest: 'on'
+         Interruptible: 'on'
+                Parent: 171.0093
+    SelectionHighlight: 'on'
+                   Tag: ''
+                  Type: 'hggroup'
+         UIContextMenu: []
+              UserData: []
+              Selected: 'off'
+               Visible: 'on'
+                 CData: [1 0 0]
+           CDataSource: ''
+             LineWidth: 0.5000
+                Marker: 'o'
+       MarkerEdgeColor: 'flat'
+       MarkerFaceColor: 'none'
+              SizeData: 36
+        SizeDataSource: ''
+                 XData: [1x100 double]
+           XDataSource: ''
+                 YData: [1x100 double]
+           YDataSource: ''
+                 ZData: [1x0 double]
+           ZDataSource: ''
+
+>> set(group1,'MarkerFaceColor',[1 1 0])
+>> set(group1,'SizeData',100)           
+>> print('-dpng','test.png');
+>> pwd
+
+ans =
+
+/Users/kendrick
+
+>> ls
+Applications				Public					kendrick
+Desktop					Sites					lic_standalone.dat
+Documents				alignvolumedata_settings.mat		limo
+Downloads				alignvolumedata_settings.mat.backup	matlab
+Dropbox					backuptostone.txt			settings.mat
+Google Drive				bbedit search comprehensive.bbprojectd	settings.mat.backup
+Kendrick.evocamsettings			bbedit search core.bbprojectd		test.png
+Library					bin					trailer3_2 copy.png
+Movies					current project files			viewvolumedata_settings.mat
+Music					ext					viewvolumedata_settings.mat.backup
+Pictures				inout
+
+>> print('-depsc2','test.eps');
+>> 
+>> 
+>> 
+>> 
+>> clc
+
+>> 
+>> 
+>> 
+>> a = randn(10,5);
+>> a
+
+a =
+
+    0.9232    0.5330   -0.9095   -0.0269   -0.0131
+   -0.1786    1.0328   -0.0056    0.1736    0.3543
+   -0.5217   -1.0520   -1.7235    0.8822   -0.8947
+    1.4320    0.3621    1.2631    0.1823    0.8121
+   -0.8701   -0.0368   -0.6004    0.7553    0.1095
+    0.8075   -1.2276   -2.0639    0.5080    2.7316
+   -0.5106   -0.2751    0.1109    0.1319    0.4111
+    0.7435   -0.1604    1.4876    0.2801   -1.3069
+    0.8479   -1.0836    0.0530   -0.9828    0.3838
+   -0.8299   -1.9542    0.1620   -0.9441    0.4995
+
+>> for p = 1:size(a,2)  
+
+
+f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+
+end
+>> 
+>> f
+
+f =
+
+    0.8696    0.9937   -0.6006   -0.1961   -0.2996
+   -0.4271    1.5341    0.1898    0.1239    0.0425
+   -0.8309   -0.7198   -1.3123    1.2550   -1.1206
+    1.4684    0.8090    1.2991    0.1378    0.4687
+   -1.2410    0.3777   -0.3303    1.0525   -0.1855
+    0.7335   -0.9097   -1.6100    0.6578    2.2561
+   -0.8179    0.1201    0.2916    0.0573    0.0953
+    0.6581    0.2441    1.4954    0.2940   -1.5044
+    0.7810   -0.7540    0.2410   -1.7221    0.0699
+   -1.1937   -1.6952    0.3363   -1.6602    0.1776
+
+>> 
+>> 
+>> 
+>> 
+>> cd ~/Desktop/
+>> 
+>> 
+>> ls
+VIZnotes.m	downloads	junk		snapshots 
+code		inout		knkutils	zscoring.m
+
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> a
+
+a =
+
+    0.9232    0.5330   -0.9095   -0.0269   -0.0131
+   -0.1786    1.0328   -0.0056    0.1736    0.3543
+   -0.5217   -1.0520   -1.7235    0.8822   -0.8947
+    1.4320    0.3621    1.2631    0.1823    0.8121
+   -0.8701   -0.0368   -0.6004    0.7553    0.1095
+    0.8075   -1.2276   -2.0639    0.5080    2.7316
+   -0.5106   -0.2751    0.1109    0.1319    0.4111
+    0.7435   -0.1604    1.4876    0.2801   -1.3069
+    0.8479   -1.0836    0.0530   -0.9828    0.3838
+   -0.8299   -1.9542    0.1620   -0.9441    0.4995
+
+>> 
+>> 
+>> clear zscoring
+>> 
+>> 
+>> 
+>> 
+>> which zscoring
+/Users/kendrick/Desktop/zscoring.m
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> a
+
+a =
+
+    0.9232    0.5330   -0.9095   -0.0269   -0.0131
+   -0.1786    1.0328   -0.0056    0.1736    0.3543
+   -0.5217   -1.0520   -1.7235    0.8822   -0.8947
+    1.4320    0.3621    1.2631    0.1823    0.8121
+   -0.8701   -0.0368   -0.6004    0.7553    0.1095
+    0.8075   -1.2276   -2.0639    0.5080    2.7316
+   -0.5106   -0.2751    0.1109    0.1319    0.4111
+    0.7435   -0.1604    1.4876    0.2801   -1.3069
+    0.8479   -1.0836    0.0530   -0.9828    0.3838
+   -0.8299   -1.9542    0.1620   -0.9441    0.4995
+
+>> 
+>> zscoring(a)
+
+ans =
+
+    0.8696    0.9937   -0.6006   -0.1961   -0.2996
+   -0.4271    1.5341    0.1898    0.1239    0.0425
+   -0.8309   -0.7198   -1.3123    1.2550   -1.1206
+    1.4684    0.8090    1.2991    0.1378    0.4687
+   -1.2410    0.3777   -0.3303    1.0525   -0.1855
+    0.7335   -0.9097   -1.6100    0.6578    2.2561
+   -0.8179    0.1201    0.2916    0.0573    0.0953
+    0.6581    0.2441    1.4954    0.2940   -1.5044
+    0.7810   -0.7540    0.2410   -1.7221    0.0699
+   -1.1937   -1.6952    0.3363   -1.6602    0.1776
+
+>> dbstop in zscoring
+>> 
+>> 
+>> 
+>> zscoring(a)
+3   f = zeros(size(a));
+K>> dbstep
+4   for p = 1:size(a,2)
+K>> whos
+  Name       Size            Bytes  Class     Attributes
+
+  a         10x5               400  double              
+  f         10x5               400  double              
+
+K>> f
+
+f =
+
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> p
+
+p =
+
+     1
+
+K>> dbstep
+6   end
+K>> f
+
+f =
+
+    0.8696         0         0         0         0
+   -0.4271         0         0         0         0
+   -0.8309         0         0         0         0
+    1.4684         0         0         0         0
+   -1.2410         0         0         0         0
+    0.7335         0         0         0         0
+   -0.8179         0         0         0         0
+    0.6581         0         0         0         0
+    0.7810         0         0         0         0
+   -1.1937         0         0         0         0
+
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> p
+
+p =
+
+     2
+
+K>> dbstep
+6   end
+K>> f
+
+f =
+
+    0.8696    0.9937         0         0         0
+   -0.4271    1.5341         0         0         0
+   -0.8309   -0.7198         0         0         0
+    1.4684    0.8090         0         0         0
+   -1.2410    0.3777         0         0         0
+    0.7335   -0.9097         0         0         0
+   -0.8179    0.1201         0         0         0
+    0.6581    0.2441         0         0         0
+    0.7810   -0.7540         0         0         0
+   -1.1937   -1.6952         0         0         0
+
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> f
+
+f =
+
+    0.8696    0.9937   -0.6006   -0.1961   -0.2996
+   -0.4271    1.5341    0.1898    0.1239    0.0425
+   -0.8309   -0.7198   -1.3123    1.2550   -1.1206
+    1.4684    0.8090    1.2991    0.1378    0.4687
+   -1.2410    0.3777   -0.3303    1.0525   -0.1855
+    0.7335   -0.9097   -1.6100    0.6578    2.2561
+   -0.8179    0.1201    0.2916    0.0573    0.0953
+    0.6581    0.2441    1.4954    0.2940   -1.5044
+    0.7810   -0.7540    0.2410   -1.7221    0.0699
+   -1.1937   -1.6952    0.3363   -1.6602    0.1776
+
+K>> dbstep
+End of function zscoring.
+K>> dbstep
+zscoring(a)
+K>> dbstep
+
+ans =
+
+    0.8696    0.9937   -0.6006   -0.1961   -0.2996
+   -0.4271    1.5341    0.1898    0.1239    0.0425
+   -0.8309   -0.7198   -1.3123    1.2550   -1.1206
+    1.4684    0.8090    1.2991    0.1378    0.4687
+   -1.2410    0.3777   -0.3303    1.0525   -0.1855
+    0.7335   -0.9097   -1.6100    0.6578    2.2561
+   -0.8179    0.1201    0.2916    0.0573    0.0953
+    0.6581    0.2441    1.4954    0.2940   -1.5044
+    0.7810   -0.7540    0.2410   -1.7221    0.0699
+   -1.1937   -1.6952    0.3363   -1.6602    0.1776
+
+>> zscoring(a)
+3   f = zeros(size(a));
+K>> dbstep
+4   for p = 1:size(a,2)
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> dbquit
+>> 
+>> 
+>> zscoring(a)
+3   f = zeros(size(a));
+K>> dbstep
+4   for p = 1:size(a,2)
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> dbstep
+5     f(:,p)  =  (a(:,p) - mean(a(:,p)))   /  std(a(:,p));
+K>> dbstep
+6   end
+K>> dbcont
+
+ans =
+
+    0.8696    0.9937   -0.6006   -0.1961   -0.2996
+   -0.4271    1.5341    0.1898    0.1239    0.0425
+   -0.8309   -0.7198   -1.3123    1.2550   -1.1206
+    1.4684    0.8090    1.2991    0.1378    0.4687
+   -1.2410    0.3777   -0.3303    1.0525   -0.1855
+    0.7335   -0.9097   -1.6100    0.6578    2.2561
+   -0.8179    0.1201    0.2916    0.0573    0.0953
+    0.6581    0.2441    1.4954    0.2940   -1.5044
+    0.7810   -0.7540    0.2410   -1.7221    0.0699
+   -1.1937   -1.6952    0.3363   -1.6602    0.1776

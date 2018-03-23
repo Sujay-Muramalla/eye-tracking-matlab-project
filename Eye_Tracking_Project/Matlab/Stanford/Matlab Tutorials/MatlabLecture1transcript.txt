@@ -1,0 +1,1313 @@
+>> 1
+
+ans =
+
+     1
+
+>> df
+??? Undefined function or variable 'df'.
+
+>> 3
+
+ans =
+
+     3
+
+>> 4
+
+ans =
+
+     4
+
+>> 
+>> 5
+
+ans =
+
+     5
+
+>> df
+??? Undefined function or variable 'df'.
+
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 
+>> a=1
+
+a =
+
+     1
+
+>> interestingvalue = 1000
+
+interestingvalue =
+
+        1000
+
+>> interestingvalue = [1 2 3]
+
+interestingvalue =
+
+     1     2     3
+
+>> whos
+  Name                  Size            Bytes  Class     Attributes
+
+  a                     1x1                 8  double              
+  ans                   1x1                 8  double              
+  interestingvalue      1x3                24  double              
+
+>> 
+>> 
+>> 
+>> 
+>> (1+2+3+4)/4
+
+ans =
+
+    2.5000
+
+>> mean([1 2 3 4])
+
+ans =
+
+    2.5000
+
+>> type mean
+
+function y = mean(x,dim)
+%MEAN   Average or mean value.
+%   For vectors, MEAN(X) is the mean value of the elements in X. For
+%   matrices, MEAN(X) is a row vector containing the mean value of
+%   each column.  For N-D arrays, MEAN(X) is the mean value of the
+%   elements along the first non-singleton dimension of X.
+%
+%   MEAN(X,DIM) takes the mean along the dimension DIM of X. 
+%
+%   Example: If X = [0 1 2
+%                    3 4 5]
+%
+%   then mean(X,1) is [1.5 2.5 3.5] and mean(X,2) is [1
+%                                                     4]
+%
+%   Class support for input X:
+%      float: double, single
+%
+%   See also MEDIAN, STD, MIN, MAX, VAR, COV, MODE.
+
+%   Copyright 1984-2005 The MathWorks, Inc. 
+%   $Revision: 5.17.4.3 $  $Date: 2005/05/31 16:30:46 $
+
+if nargin==1, 
+  % Determine which dimension SUM will use
+  dim = min(find(size(x)~=1));
+  if isempty(dim), dim = 1; end
+
+  y = sum(x)/size(x,dim);
+else
+  y = sum(x,dim)/size(x,dim);
+end
+
+>> type +
+'+' is a built-in function.
+>> 
+>> 
+>> 
+>> mean([1 2 3 4])
+
+ans =
+
+    2.5000
+
+>> 
+>> 
+>> 
+>> aa = [1 2 3 4]
+
+aa =
+
+     1     2     3     4
+
+>> mean(aa)
+
+ans =
+
+    2.5000
+
+>> mean(ghgh)
+??? Undefined function or variable 'ghgh'.
+
+>> whos
+  Name                  Size            Bytes  Class     Attributes
+
+  a                     1x1                 8  double              
+  aa                    1x4                32  double              
+  ans                   1x1                 8  double              
+  interestingvalue      1x3                24  double              
+
+>> 
+>> 
+>> 
+>> whos
+  Name                  Size            Bytes  Class     Attributes
+
+  a                     1x1                 8  double              
+  aa                    1x4                32  double              
+  ans                   1x1                 8  double              
+  interestingvalue      1x3                24  double              
+
+>> 
+>> 
+>> 
+>> 
+>> 
+>> clear all
+>> 
+>> 
+>> whos
+>> 
+>> 
+>> 
+>> a = 10
+
+a =
+
+    10
+
+>> testscript  
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  b         1x1                 8  double              
+
+>> 
+>> 
+>> a = 10
+
+a =
+
+    10
+
+>> a = 10;
+>> a = 11;
+>> a
+
+a =
+
+    11
+
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  b         1x1                 8  double              
+
+>> 
+>> 
+>> 
+>> a
+
+a =
+
+    11
+
+>> b
+
+b =
+
+    11
+
+>> b = 34
+
+b =
+
+    34
+
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  b         1x1                 8  double              
+
+>> 
+>> 
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  b         1x1                 8  double              
+
+>> 
+>> a
+
+a =
+
+    11
+
+>> b
+
+b =
+
+    34
+
+>> pwd             
+
+ans =
+
+/Users/kendrick
+
+>> save('data.mat');
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x15               30  char                
+  b         1x1                 8  double              
+
+>> clear all
+>> 
+>> 
+>> 
+>> whos
+>> 
+>> 
+>> load('data.mat')
+>> whos            
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x15               30  char                
+  b         1x1                 8  double              
+
+>> a
+
+a =
+
+    11
+
+>> b
+
+b =
+
+    34
+
+>> 
+>> 
+>> 
+>> type mean
+
+function y = mean(x,dim)
+%MEAN   Average or mean value.
+%   For vectors, MEAN(X) is the mean value of the elements in X. For
+%   matrices, MEAN(X) is a row vector containing the mean value of
+%   each column.  For N-D arrays, MEAN(X) is the mean value of the
+%   elements along the first non-singleton dimension of X.
+%
+%   MEAN(X,DIM) takes the mean along the dimension DIM of X. 
+%
+%   Example: If X = [0 1 2
+%                    3 4 5]
+%
+%   then mean(X,1) is [1.5 2.5 3.5] and mean(X,2) is [1
+%                                                     4]
+%
+%   Class support for input X:
+%      float: double, single
+%
+%   See also MEDIAN, STD, MIN, MAX, VAR, COV, MODE.
+
+%   Copyright 1984-2005 The MathWorks, Inc. 
+%   $Revision: 5.17.4.3 $  $Date: 2005/05/31 16:30:46 $
+
+if nargin==1, 
+  % Determine which dimension SUM will use
+  dim = min(find(size(x)~=1));
+  if isempty(dim), dim = 1; end
+
+  y = sum(x)/size(x,dim);
+else
+  y = sum(x,dim)/size(x,dim);
+end
+
+>> which mean
+/Applications/matlab76/toolbox/matlab/datafun/mean.m
+>> 
+>> 
+>> edit mean
+>> 
+>> 
+>> 
+>> type mean
+
+function y = mean(x,dim)
+%MEAN   Average or mean value.
+%   For vectors, MEAN(X) is the mean value of the elements in X. For
+%   matrices, MEAN(X) is a row vector containing the mean value of
+%   each column.  For N-D arrays, MEAN(X) is the mean value of the
+%   elements along the first non-singleton dimension of X.
+%
+%   MEAN(X,DIM) takes the mean along the dimension DIM of X. 
+%
+%   Example: If X = [0 1 2
+%                    3 4 5]
+%
+%   then mean(X,1) is [1.5 2.5 3.5] and mean(X,2) is [1
+%                                                     4]
+%
+%   Class support for input X:
+%      float: double, single
+%
+%   See also MEDIAN, STD, MIN, MAX, VAR, COV, MODE.
+
+%   Copyright 1984-2005 The MathWorks, Inc. 
+%   $Revision: 5.17.4.3 $  $Date: 2005/05/31 16:30:46 $
+
+if nargin==1, 
+  % Determine which dimension SUM will use
+  dim = min(find(size(x)~=1));
+  if isempty(dim), dim = 1; end
+
+  y = sum(x)/size(x,dim);
+else
+  y = sum(x,dim)/size(x,dim);
+end
+
+>> help mean
+ MEAN   Average or mean value.
+    For vectors, MEAN(X) is the mean value of the elements in X. For
+    matrices, MEAN(X) is a row vector containing the mean value of
+    each column.  For N-D arrays, MEAN(X) is the mean value of the
+    elements along the first non-singleton dimension of X.
+ 
+    MEAN(X,DIM) takes the mean along the dimension DIM of X. 
+ 
+    Example: If X = [0 1 2
+                     3 4 5]
+ 
+    then mean(X,1) is [1.5 2.5 3.5] and mean(X,2) is [1
+                                                      4]
+ 
+    Class support for input X:
+       float: double, single
+ 
+    See also MEDIAN, STD, MIN, MAX, VAR, COV, MODE.
+
+    Overloaded methods:
+       kde/mean
+       timeseries/mean
+       fints/mean
+
+>> pwd
+
+ans =
+
+/Users/kendrick
+
+>> ls
+Applications				Sites					kendrick
+Desktop					alignvolumedata_settings.mat		lic_standalone.dat
+Documents				alignvolumedata_settings.mat.backup	limo
+Downloads				backuptostone.txt			matlab
+Dropbox					bbedit search comprehensive.bbprojectd	settings.mat
+Google Drive				bbedit search core.bbprojectd		settings.mat.backup
+Library					bin					trailer3_2 copy.png
+Movies					current project files			viewvolumedata_settings.mat
+Music					data.mat				viewvolumedata_settings.mat.backup
+Pictures				ext
+Public					inout
+
+>> cd
+
+/Users/kendrick
+
+>> 
+>> 
+>> cd /Applications/
+>> pwd
+
+ans =
+
+/Applications
+
+>> help save
+ SAVE Save workspace variables to disk. 
+    SAVE FILENAME saves all workspace variables to the binary "MAT-file"
+    named FILENAME.mat.  The data may be retrieved with LOAD.  If FILENAME
+    has no extension, .mat is assumed.  
+ 
+    SAVE, by itself, creates the binary "MAT-file" named 'matlab.mat'.
+ 
+    SAVE FILENAME X  saves only X.
+    SAVE FILENAME X Y Z  saves X, Y, and Z. The wildcard '*' can be used to
+    save only those variables that match a pattern.
+ 
+    SAVE FILENAME -REGEXP PAT1 PAT2 can be used to save all variables
+    matching the specified patterns using regular expressions. For more
+    information on using regular expressions, type "doc regexp" at the
+    command prompt.
+ 
+    SAVE FILENAME -STRUCT S saves the fields of the scalar structure S as
+    individual variables within the file FILENAME.
+    SAVE FILENAME -STRUCT S X Y Z  saves the fields S.X, S.Y and S.Z to
+    FILENAME as individual variables X, Y and Z. 
+ 
+    SAVE FILENAME ... -APPEND adds the variables to an existing file 
+    (MAT-file only).
+ 
+    Format Options:
+    SAVE ... -ASCII  uses 8-digit ASCII form instead of binary regardless
+                     of file extension.
+    SAVE ... -ASCII -DOUBLE  uses 16-digit ASCII form.
+    SAVE ... -ASCII -TABS  delimits with tabs.
+    SAVE ... -ASCII -DOUBLE -TABS  16-digit, tab delimited.
+    SAVE ... -MAT    saves in MAT format regardless of extension.
+ 
+    Version Compatibility Options:
+      The following options enable you to save your workspace data to a
+      MAT-file that can then be loaded into an earlier version of MATLAB.
+      The resulting MAT-file supports only those data items and features
+      that were available in this earlier version of MATLAB. (See the 
+      second table below for what is supported in each version.)
+ 
+    Command Option   |  Saves a MAT-File That You Can Load In
+    -----------------+----------------------------------------------
+    SAVE ... -V7.3   |  Version 7.3 or later
+    -----------------+----------------------------------------------
+    SAVE ... -V7     |  Versions 7.0 through 7.2 (or later)
+    -----------------+----------------------------------------------
+    SAVE ... -V6     |  Versions 5 and 6 (or later)
+    -----------------+----------------------------------------------
+    SAVE ... -V4     |  Versions 1 through 4 (or later)
+ 
+    To make one of these options the default for all of your MATLAB 
+    sessions, use the Preferences dialog box. In the MATLAB File menu, 
+    select Preferences. Then, in the Preferences dialog box, click 
+    General and then MAT-Files.
+ 
+    MATLAB Versions  |  Data Items or Features Supported
+    -----------------+----------------------------------------------
+    4 and earlier    |  Support for 2D double, character, and sparse 
+                     |  arrays
+    -----------------+----------------------------------------------
+    5 and 6          |  Version 4 capability plus support for 
+                     |  ND arrays, structs, and cells
+    -----------------+----------------------------------------------
+    7.0 through 7.2  |  Version 6 capability plus support for data
+                     |  compression and Unicode character encoding
+    -----------------+----------------------------------------------
+    7.3 and later    |  Version 7.2 capability plus support for
+                     |  data items greater than or equal to 2GB
+ 
+    Examples for pattern matching:
+        save fname a*                % Save variables starting with "a"
+        save fname -regexp \d        % Save variables containing any digits
+ 
+    Examples for specifying filename and variables:
+        save mydata.mat v1    % Use with literal filename
+        save 'my data file.mat' v1  % Use when filename has spaces
+        save(savefile, 'v1')  % Use when filename is stored in a variable
+ 
+    See also LOAD, WHOS, DIARY, FWRITE, FPRINTF, UISAVE, REGEXP, FILEFORMATS.
+
+    Overloaded methods:
+       xmltree/save
+       gifti/save
+       xmltree/save
+       vrworld/save
+
+>> 
+>> 
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x13               26  char                
+  b         1x1                 8  double              
+
+>> save('data.mat','b');
+>> 
+>>    
+>> 
+>> 
+>> 
+>> a = 1
+
+a =
+
+     1
+
+>> 
+>> 
+>> b = 'data.mat'
+
+b =
+
+data.mat
+
+>> 
+>> 
+>> 
+>>     
+>> 
+>> save(b);      
+>> b   
+
+b =
+
+data.mat
+
+>> 
+>> 
+>> Inf
+
+ans =
+
+   Inf
+
+>> 
+>> 
+>> 'Inf'
+
+ans =
+
+Inf
+
+>> 1/0
+
+ans =
+
+   Inf
+
+>> Inf
+
+ans =
+
+   Inf
+
+>> -Inf
+
+ans =
+
+  -Inf
+
+>> -10/0
+
+ans =
+
+  -Inf
+
+>> NaN
+
+ans =
+
+   NaN
+
+>> NaN
+
+ans =
+
+   NaN
+
+>> NaN + 1 + 2
+
+ans =
+
+   NaN
+
+>> nansum([NaN 1 2])
+
+ans =
+
+     3
+
+>> f = 1;
+>> f = single(1)
+>> 1
+
+ans =
+
+     1
+
+>> f = 1
+
+f =
+
+     1
+
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x1                 8  double              
+  b         1x8                16  char                
+  f         1x1                 8  double              
+
+>> f = single(f);
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x1                 8  double              
+  b         1x8                16  char                
+  f         1x1                 4  single              
+
+>> class(f)
+
+ans =
+
+single
+
+>> class(a)
+
+ans =
+
+double
+
+>> isdouble(f)
+??? Undefined function or method 'isdouble' for input arguments of type 'single'.
+
+>> isa(f,'double')
+
+ans =
+
+     0
+
+>> whos
+  Name      Size            Bytes  Class      Attributes
+
+  a         1x1                 8  double               
+  ans       1x1                 1  logical              
+  b         1x8                16  char                 
+  f         1x1                 4  single               
+
+>> isa(f,'single'(
+??? isa(f,'single'(
+                  |
+Error: Unbalanced or unexpected parenthesis or bracket.
+
+>> isa(f,'single')
+
+ans =
+
+     1
+
+>> 
+>> 
+>> 
+>> 
+>> 
+>> 1+2
+
+ans =
+
+     3
+
+>> str = 'weird'
+
+str =
+
+weird
+
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x1                 8  double              
+  b         1x8                16  char                
+  f         1x1                 4  single              
+  str       1x5                10  char                
+
+>> 
+>> 
+>> 
+>> ['weird'   ' stuff']
+
+ans =
+
+weird stuff
+
+>> [1 2 3 4]
+
+ans =
+
+     1     2     3     4
+
+>> [ [1 2 3 4]    [5 6 7 8] ]
+
+ans =
+
+     1     2     3     4     5     6     7     8
+
+>> 'w'                                            
+
+ans =
+
+w
+
+>> 'w'
+
+ans =
+
+w
+
+>> double('w')
+
+ans =
+
+   119
+
+>> [ ['weird'] [' stuff']]
+
+ans =
+
+weird stuff
+
+>> [[[[3 4]]]]
+
+ans =
+
+     3     4
+
+>> [2 3 4 5 6 7]
+
+ans =
+
+     2     3     4     5     6     7
+
+>> x = [2 3 4; 5 6 7]
+
+x =
+
+     2     3     4
+     5     6     7
+
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x6                48  double              
+  b         1x8                16  char                
+  f         1x1                 4  single              
+  str       1x5                10  char                
+  x         2x3                48  double              
+
+>> x
+
+x =
+
+     2     3     4
+     5     6     7
+
+>> 
+>> 
+>> x = rand(2,2,2)
+
+x(:,:,1) =
+
+    0.8147    0.1270
+    0.9058    0.9134
+
+
+x(:,:,2) =
+
+    0.6324    0.2785
+    0.0975    0.5469
+
+>> x = rand(2,2,2,2,2,2,2)  
+
+x(:,:,1,1,1,1,1) =
+
+    0.9575    0.1576
+    0.9649    0.9706
+
+
+x(:,:,2,1,1,1,1) =
+
+    0.9572    0.8003
+    0.4854    0.1419
+
+
+x(:,:,1,2,1,1,1) =
+
+    0.4218    0.7922
+    0.9157    0.9595
+
+
+x(:,:,2,2,1,1,1) =
+
+    0.6557    0.8491
+    0.0357    0.9340
+
+
+x(:,:,1,1,2,1,1) =
+
+    0.6787    0.7431
+    0.7577    0.3922
+
+
+x(:,:,2,1,2,1,1) =
+
+    0.6555    0.7060
+    0.1712    0.0318
+
+
+x(:,:,1,2,2,1,1) =
+
+    0.2769    0.0971
+    0.0462    0.8235
+
+
+x(:,:,2,2,2,1,1) =
+
+    0.6948    0.9502
+    0.3171    0.0344
+
+
+x(:,:,1,1,1,2,1) =
+
+    0.4387    0.7655
+    0.3816    0.7952
+
+
+x(:,:,2,1,1,2,1) =
+
+    0.1869    0.4456
+    0.4898    0.6463
+
+
+x(:,:,1,2,1,2,1) =
+
+    0.7094    0.2760
+    0.7547    0.6797
+
+
+x(:,:,2,2,1,2,1) =
+
+    0.6551    0.1190
+    0.1626    0.4984
+
+
+x(:,:,1,1,2,2,1) =
+
+    0.9597    0.5853
+    0.3404    0.2238
+
+
+x(:,:,2,1,2,2,1) =
+
+    0.7513    0.5060
+    0.2551    0.6991
+
+
+x(:,:,1,2,2,2,1) =
+
+    0.8909    0.5472
+    0.9593    0.1386
+
+
+x(:,:,2,2,2,2,1) =
+
+    0.1493    0.8407
+    0.2575    0.2543
+
+
+x(:,:,1,1,1,1,2) =
+
+    0.8143    0.9293
+    0.2435    0.3500
+
+
+x(:,:,2,1,1,1,2) =
+
+    0.1966    0.6160
+    0.2511    0.4733
+
+
+x(:,:,1,2,1,1,2) =
+
+    0.3517    0.5853
+    0.8308    0.5497
+
+
+x(:,:,2,2,1,1,2) =
+
+    0.9172    0.7572
+    0.2858    0.7537
+
+
+x(:,:,1,1,2,1,2) =
+
+    0.3804    0.0759
+    0.5678    0.0540
+
+
+x(:,:,2,1,2,1,2) =
+
+    0.5308    0.9340
+    0.7792    0.1299
+
+
+x(:,:,1,2,2,1,2) =
+
+    0.5688    0.0119
+    0.4694    0.3371
+
+
+x(:,:,2,2,2,1,2) =
+
+    0.1622    0.3112
+    0.7943    0.5285
+
+
+x(:,:,1,1,1,2,2) =
+
+    0.1656    0.2630
+    0.6020    0.6541
+
+
+x(:,:,2,1,1,2,2) =
+
+    0.6892    0.4505
+    0.7482    0.0838
+
+
+x(:,:,1,2,1,2,2) =
+
+    0.2290    0.1524
+    0.9133    0.8258
+
+
+x(:,:,2,2,1,2,2) =
+
+    0.5383    0.0782
+    0.9961    0.4427
+
+
+x(:,:,1,1,2,2,2) =
+
+    0.1067    0.0046
+    0.9619    0.7749
+
+
+x(:,:,2,1,2,2,2) =
+
+    0.8173    0.0844
+    0.8687    0.3998
+
+
+x(:,:,1,2,2,2,2) =
+
+    0.2599    0.4314
+    0.8001    0.9106
+
+
+x(:,:,2,2,2,2,2) =
+
+    0.1818    0.1455
+    0.2638    0.1361
+
+>> x = rand(2,2,2,2,2,2,2);
+>> 
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x6                48  double              
+  b         1x8                16  char                
+  f         1x1                 4  single              
+  str       1x5                10  char                
+  x         7-D              1024  double              
+
+>> x = [1 2 3];
+>> x = [2 3];
+>> x = [3];
+>> x = []
+
+x =
+
+     []
+
+>> whos
+  Name      Size            Bytes  Class     Attributes
+
+  a         1x1                 8  double              
+  ans       1x6                48  double              
+  b         1x8                16  char                
+  f         1x1                 4  single              
+  str       1x5                10  char                
+  x         0x0                 0  double              
+
+>> x = zeros(10,10)
+
+x =
+
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0
+
+>> x = ones(10,10)
+
+x =
+
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+
+>> x
+
+x =
+
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+     1     1     1     1     1     1     1     1     1     1
+
+>> 
+>> 
+>> x = rand(3,3)
+
+x =
+
+    0.0987    0.6797    0.1068
+    0.2619    0.1366    0.6538
+    0.3354    0.7212    0.4942
+
+>> x(2,3)
+
+ans =
+
+    0.6538
+
+>> x(2,[1 2 3])
+
+ans =
+
+    0.2619    0.1366    0.6538
+
+>> f = x(2,[1 2 3])
+
+f =
+
+    0.2619    0.1366    0.6538
+
+>> f = x(2,[2 3])  
+
+f =
+
+    0.1366    0.6538
+
+>> f = x(2,[1 3])
+
+f =
+
+    0.2619    0.6538
+
+>> f = x(2,:)    
+
+f =
+
+    0.2619    0.1366    0.6538
+
+>> x = rand(5,5)
+
+x =
+
+    0.7791    0.6987    0.4799    0.8055    0.0287
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> 
+>> 
+>> 
+>> 1:4               
+
+ans =
+
+     1     2     3     4
+
+>> 1:10
+
+ans =
+
+     1     2     3     4     5     6     7     8     9    10
+
+>> x(:,1:4)      
+
+ans =
+
+    0.7791    0.6987    0.4799    0.8055
+    0.7150    0.1978    0.9047    0.5767
+    0.9037    0.0305    0.6099    0.1829
+    0.8909    0.7441    0.6177    0.2399
+    0.3342    0.5000    0.8594    0.8865
+
+>> x(:,1:end-1)
+
+ans =
+
+    0.7791    0.6987    0.4799    0.8055
+    0.7150    0.1978    0.9047    0.5767
+    0.9037    0.0305    0.6099    0.1829
+    0.8909    0.7441    0.6177    0.2399
+    0.3342    0.5000    0.8594    0.8865
+
+>> x
+
+x =
+
+    0.7791    0.6987    0.4799    0.8055    0.0287
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> x([1 3],3:5)
+
+ans =
+
+    0.4799    0.8055    0.0287
+    0.6099    0.1829    0.1679
+
+>> 
+>> x
+
+x =
+
+    0.7791    0.6987    0.4799    0.8055    0.0287
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> x(1,2) = 10
+
+x =
+
+    0.7791   10.0000    0.4799    0.8055    0.0287
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> x(1,[2 3]) = [10 11]
+
+x =
+
+    0.7791   10.0000   11.0000    0.8055    0.0287
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> x(1,[2 3]) = 0      
+
+x =
+
+    0.7791         0         0    0.8055    0.0287
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> x(1,:) = 0
+
+x =
+
+         0         0         0         0         0
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> x(1,:) = [0 0 0 0 0]
+
+x =
+
+         0         0         0         0         0
+    0.7150    0.1978    0.9047    0.5767    0.4899
+    0.9037    0.0305    0.6099    0.1829    0.1679
+    0.8909    0.7441    0.6177    0.2399    0.9787
+    0.3342    0.5000    0.8594    0.8865    0.7127
+
+>> 
+>> 
+>> 
+>> help end
+ END Terminate scope of FOR, WHILE, SWITCH, TRY, and IF statements.
+    Without END's, FOR, WHILE, SWITCH, TRY, and IF wait for further input.
+    Each END is paired with the closest previous unpaired FOR, WHILE,
+    SWITCH, TRY or IF and serves to terminate its scope.
+ 
+    END also marks the termination of an M-file function, although in 
+    most cases it is optional. END statements are required only in 
+    M-files that employ one or more nested functions. Within such an 
+    M-file, every function (including primary, nested, private, and 
+    subfunctions) must be terminated with an END statement. You can 
+    terminate any function type with END, but doing so is not required
+    unless the M-file contains a nested function.
+ 
+    END can also serve as the last index in an indexing expression.  In
+    that context, END = SIZE(X,k) when used as part of the k-th index.
+    Examples of this use are, X(3:end) and X(1,1:2:end-1).  When using END
+    to grow an array, as in X(end+1) = 5, make sure X exists first.
+ 
+    END(A,K,N) is called for indexing expressions involving the object A
+    when END is part of the K-th index out of N indices.  For example,
+    the expression A(end-1,:) calls A's END method with END(A,1,2).
+ 
+    See also FOR, WHILE, SWITCH, TRY, IF.
+
+    Overloaded methods:
+       file_array/end
+       timer/end
+       serial/end
+       tscollection/end
+       timeseries/end
+       gf/end
+       lti/end
+       distributed/end
+       fints/end
+       idmodel/end
+       idfrd/end
+       iddata/end
+       idnlfunVector/end
+       instrument/end
+       icgroup/end
+       uss/end
+       umat/end
+       ufrd/end
+       ndlft/end
+       qrandset/end
+       dataset/end
+       categorical/end
+
+>> type end
+'end' is a built-in function.
+>> 

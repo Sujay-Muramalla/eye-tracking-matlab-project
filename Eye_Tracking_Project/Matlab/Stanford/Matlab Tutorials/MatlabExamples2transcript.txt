@@ -1,0 +1,620 @@
+>> x = -20:20;
+>> size(x)
+
+ans =
+
+     1    41
+
+>> y = 1.5*x.^2 - 60*x + 10 + 30*randn(size(x));
+>> size(x)
+
+ans =
+
+     1    41
+
+>> size(y)
+
+ans =
+
+     1    41
+
+>> figure;scatter(x,y);
+>> X = [x(:).^2 x(:) ones(length(x),1)];
+>> size(X)
+
+ans =
+
+    41     3
+
+>> figure;imagesc(X);
+>> colormap(gray);
+>> colorbar;
+>> figure;plot(X);
+>> size(y)
+
+ans =
+
+     1    41
+
+>> w = inv(X'*X)*X'*y(:);
+>> size(w)
+
+ans =
+
+     3     1
+
+>> w
+
+w =
+
+    1.4527
+  -59.9812
+   19.9513
+
+>> size(X)
+
+ans =
+
+    41     3
+
+>> size(w)
+
+ans =
+
+     3     1
+
+>> modelfit = X*w;
+>> size(modelfit)
+
+ans =
+
+    41     1
+
+>> size(y)
+
+ans =
+
+     1    41
+
+>> squarederror = sum((y(:)-modelfit).^2);
+>> squ
+??? Undefined function or variable 'squ'.
+
+>> squarederror
+
+squarederror =
+
+   3.1431e+04
+
+>> y
+
+y =
+
+   1.0e+03 *
+
+  Columns 1 through 9
+
+    1.7970    1.6415    1.5798    1.4721    1.3196    1.2832    1.1797    1.0424    0.9558
+
+  Columns 10 through 18
+
+    0.8567    0.7544    0.6933    0.5684    0.5690    0.4199    0.3509    0.3060    0.2053
+
+  Columns 19 through 27
+
+    0.1331    0.0465    0.0188   -0.0886   -0.0826   -0.1078   -0.2268   -0.2268   -0.2584
+
+  Columns 28 through 36
+
+   -0.3843   -0.4172   -0.3914   -0.4520   -0.4478   -0.4695   -0.4951   -0.4973   -0.5324
+
+  Columns 37 through 41
+
+   -0.5303   -0.6126   -0.5846   -0.5932   -0.6381
+
+>> format long
+>> y
+
+y =
+
+   1.0e+03 *
+
+  Columns 1 through 4
+
+   1.797023055654153   1.641532468652857   1.579759969194245   1.472130292610756
+
+  Columns 5 through 8
+
+   1.319605859479556   1.283227463969290   1.179674926049563   1.042371001702200
+
+  Columns 9 through 12
+
+   0.955818770842260   0.856739174284628   0.754398742669557   0.693273716448799
+
+  Columns 13 through 16
+
+   0.568350503709574   0.568995574545913   0.419908123507402   0.350917939405624
+
+  Columns 17 through 20
+
+   0.306003046340776   0.205278443815708   0.133130547835490   0.046529516090499
+
+  Columns 21 through 24
+
+   0.018832324491779  -0.088585455738134  -0.082570263445431  -0.107793138066612
+
+  Columns 25 through 28
+
+  -0.226753271051069  -0.226760099815152  -0.258379957351924  -0.384311887293424
+
+  Columns 29 through 32
+
+  -0.417228932957031  -0.391365571290255  -0.451996567331461  -0.447800078736070
+
+  Columns 33 through 36
+
+  -0.469531331333716  -0.495142750294973  -0.497292507352026  -0.532441984829539
+
+  Columns 37 through 40
+
+  -0.530274857772699  -0.612573713443218  -0.584593686733063  -0.593201518964959
+
+  Column 41
+
+  -0.638122566860035
+
+>> format long g
+>> y
+
+y =
+
+  Columns 1 through 3
+
+          1797.02305565415          1641.53246865286          1579.75996919424
+
+  Columns 4 through 6
+
+          1472.13029261076          1319.60585947956          1283.22746396929
+
+  Columns 7 through 9
+
+          1179.67492604956           1042.3710017022           955.81877084226
+
+  Columns 10 through 12
+
+          856.739174284628          754.398742669557          693.273716448799
+
+  Columns 13 through 15
+
+          568.350503709574          568.995574545913          419.908123507402
+
+  Columns 16 through 18
+
+          350.917939405624          306.003046340776          205.278443815708
+
+  Columns 19 through 21
+
+           133.13054783549          46.5295160904993          18.8323244917792
+
+  Columns 22 through 24
+
+         -88.5854557381341         -82.5702634454314         -107.793138066612
+
+  Columns 25 through 27
+
+         -226.753271051069         -226.760099815152         -258.379957351924
+
+  Columns 28 through 30
+
+         -384.311887293424         -417.228932957031         -391.365571290255
+
+  Columns 31 through 33
+
+         -451.996567331461          -447.80007873607         -469.531331333716
+
+  Columns 34 through 36
+
+         -495.142750294973         -497.292507352026         -532.441984829539
+
+  Columns 37 through 39
+
+         -530.274857772699         -612.573713443218         -584.593686733063
+
+  Columns 40 through 41
+
+         -593.201518964959         -638.122566860035
+
+>> squarederror
+
+squarederror =
+
+          31431.0339019547
+
+>> figure;
+>> hold on;
+>> scatter(x,y,'r.');
+>> ax = axis;
+>> ax
+
+ax =
+
+         -20          20       -1000        2000
+
+>> xx = linspace(ax(1),ax(2),100)';
+>> size(xx)
+
+ans =
+
+   100     1
+
+>> yy = [xx.^2 xx ones(length(xx),1)]*w;
+>> plot(xx,yy,'k-');
+>> xlabel('x');
+>> ylabel('y');
+>> title(sprintf('squared error = %.1f',squarederror));
+>> close all
+>> 
+>> 
+>> clc
+
+>> x = 0:.05:3;
+>> y = 5*x.^3.5 + 5*randn(size(x));
+>> figure;scatter(x,y)
+>> 
+>> options = optimset('Display','iter','FunValCheck','on', ...
+                   'MaxFunEvals',Inf,'MaxIter',Inf, ...
+                   'TolFun',1e-6,'TolX',1e-6);
+>> 
+>> 
+>> options
+
+options = 
+
+                   Display: 'iter'
+               MaxFunEvals: Inf
+                   MaxIter: Inf
+                    TolFun: 1e-06
+                      TolX: 1e-06
+               FunValCheck: 'on'
+                 OutputFcn: []
+                  PlotFcns: []
+           ActiveConstrTol: []
+                 Algorithm: []
+    AlwaysHonorConstraints: []
+            BranchStrategy: []
+           DerivativeCheck: []
+               Diagnostics: []
+             DiffMaxChange: []
+             DiffMinChange: []
+               FinDiffType: []
+         GoalsExactAchieve: []
+                GradConstr: []
+                   GradObj: []
+                   HessFcn: []
+                   Hessian: []
+                  HessMult: []
+               HessPattern: []
+                HessUpdate: []
+           InitialHessType: []
+         InitialHessMatrix: []
+          InitBarrierParam: []
+     InitTrustRegionRadius: []
+                  Jacobian: []
+                 JacobMult: []
+              JacobPattern: []
+                LargeScale: []
+        LevenbergMarquardt: []
+            LineSearchType: []
+                  MaxNodes: []
+                MaxPCGIter: []
+             MaxProjCGIter: []
+                MaxRLPIter: []
+                MaxSQPIter: []
+                   MaxTime: []
+             MeritFunction: []
+                 MinAbsMax: []
+       NodeDisplayInterval: []
+        NodeSearchStrategy: []
+          NonlEqnAlgorithm: []
+        NoStopIfFlatInfeas: []
+            ObjectiveLimit: []
+      PhaseOneTotalScaling: []
+            Preconditioner: []
+          PrecondBandWidth: []
+            RelLineSrchBnd: []
+    RelLineSrchBndDuration: []
+              ScaleProblem: []
+          ShowStatusWindow: []
+                   Simplex: []
+       SubproblemAlgorithm: []
+                    TolCon: []
+                 TolConSQP: []
+                TolGradCon: []
+                    TolPCG: []
+                 TolProjCG: []
+              TolProjCGAbs: []
+                 TolRLPFun: []
+               TolXInteger: []
+                  TypicalX: []
+               UseParallel: []
+
+>> 
+>> 
+>> 
+>> paramslb = [-Inf 0]; % lower bound paramsub = [ Inf Inf]; % upper bound
+>> 
+>> 
+>> paramsub = [ Inf Inf];
+>> 
+>> 
+>> params0 = [  1     1];
+>> 
+>> modelfun = @(pp,xx) pp(1)*xx.^pp(2);
+>> [params,resnorm,residual,exitflag,output] = lsqcurvefit(modelfun,params0,x,y,paramslb,paramsub,options);
+
+                                         Norm of      First-order 
+ Iteration  Func-count     f(x)          step          optimality   CG-iterations
+     0          3          414547                      7.78e+03
+     1          6          414547             10       7.78e+03            0
+     2          9          234006            2.5       8.07e+04            0
+     3         12          234006        2.74839       8.07e+04            0
+     4         15         93763.7       0.687099       1.05e+05            0
+     5         18         16754.5         1.3742       3.66e+05            0
+     6         21         1666.03       0.320014       2.42e+04            0
+     7         24          1256.4       0.952768        9.1e+03            0
+     8         27          1006.8       0.424099       1.29e+03            0
+     9         30         1002.79     0.00431853           7.08            0
+    10         33         1002.79    0.000128085        0.00189            0
+Optimization terminated: relative function value
+ changing by less than OPTIONS.TolFun.
+>> params
+
+params =
+
+           5.4115121554587          3.40914968155099
+
+>> modelfit = modelfun(params,x);
+>> size(modelfit)
+
+ans =
+
+     1    61
+
+>> size(y)
+
+ans =
+
+     1    61
+
+>> squarederror = sum((y(:)-modelfit(:)).^2);
+>> figure;
+>> hold on;
+>> scatter(x,y,'r.');
+>> ax = axis;
+>> xx = linspace(ax(1),ax(2),100)';
+>> yy = modelfun(params,xx);
+>> plot(xx,yy,'k-');
+>> xlabel('x');
+>> ylabel('y');
+>> title(sprintf('squared error = %.1f',squarederror));
+>> 
+>> modelfun = @(pp,xx) pp(1)*xx + pp(2);
+>> [params,resnorm,residual,exitflag,output] = lsqcurvefit(modelfun,params0,x,y,paramslb,paramsub,options);
+
+                                         Norm of      First-order 
+ Iteration  Func-count     f(x)          step          optimality   CG-iterations
+     0          3          408352                      7.69e+03
+     1          6          265791             10       5.64e+03            0
+     2          9          113740             20       1.85e+03            0
+     3         12         96015.2         9.5469       4.81e+03            0
+     4         15         87379.1        3.74574            354            0
+     5         18         86709.4       0.696884           17.5            0
+     6         21         86676.1        0.14779          0.876            0
+     7         24         86674.5      0.0329543         0.0438            0
+     8         27         86674.4     0.00741572        0.00192            0
+Optimization terminated: relative function value
+ changing by less than OPTIONS.TolFun.
+>> modelfit = modelfun(params,x);
+>> xx = linspace(ax(1),ax(2),100)';
+>> yy = modelfun(params,xx);
+>> hold on;
+>> plot(xx,yy,'b-');
+>> x = rand(1,1000).^2;
+>> x
+
+x =
+
+  Columns 1 through 3
+
+         0.663774685170091         0.820459033271203        0.0161256515123607
+
+  Columns 4 through 6
+
+         0.834255454577687         0.399878216286768       0.00951413060744884
+
+  Columns 7 through 9
+
+        0.0775612579121184         0.299079396047951         0.916819339903403
+
+  Columns 10 through 12
+
+         0.931009885359006        0.0248418835158935          0.94205034800581
+...
+
+>> figure;hist(x)
+>> close all
+>> options = optimset('Display','iter','FunValCheck','on', ...
+                   'MaxFunEvals',Inf,'MaxIter',Inf, ...
+                   'TolFun',1e-6,'TolX',1e-6);
+>> 
+>> 
+>> paramslb = [];  % [] means no bounds
+>> paramsub = [];
+>> 
+>> params0 = [0];
+>> 
+>> help lsqnonlin
+ LSQNONLIN solves non-linear least squares problems.
+    LSQNONLIN attempts to solve problems of the form:
+    min  sum {FUN(X).^2}    where X and the values returned by FUN can be   
+     X                      vectors or matrices.
+ 
+    X = LSQNONLIN(FUN,X0) starts at the matrix X0 and finds a minimum X to 
+    the sum of squares of the functions in FUN. FUN accepts input X 
+    and returns a vector (or matrix) of function values F evaluated
+    at X. NOTE: FUN should return FUN(X) and not the sum-of-squares 
+    sum(FUN(X).^2)). (FUN(X) is summed and squared implicitly in the
+    algorithm.) 
+ 
+    X = LSQNONLIN(FUN,X0,LB,UB) defines a set of lower and upper bounds on
+    the design variables, X, so that the solution is in the range LB <= X
+    <= UB. Use empty matrices for LB and UB if no bounds exist. Set LB(i)
+    = -Inf if X(i) is unbounded below; set UB(i) = Inf if X(i) is
+    unbounded above.
+ 
+    X = LSQNONLIN(FUN,X0,LB,UB,OPTIONS) minimizes with the default
+    optimization parameters replaced by values in the structure OPTIONS, an
+    argument created with the OPTIMSET function. See OPTIMSET for details.
+    Used options are Display, TolX, TolFun, DerivativeCheck, Diagnostics,
+    FunValCheck, Jacobian, JacobMult, JacobPattern, LineSearchType,
+    LevenbergMarquardt, MaxFunEvals, MaxIter, DiffMinChange and
+    DiffMaxChange, LargeScale, MaxPCGIter, PrecondBandWidth, TolPCG,
+    TypicalX, PlotFcns, and OutputFcn. Use the Jacobian option to specify
+    that FUN also returns a second output argument J that is the Jacobian
+    matrix at the point X. If FUN returns a vector F of m components when X
+    has length n, then J is an m-by-n matrix where J(i,j) is the partial
+    derivative of F(i) with respect to x(j). (Note that the Jacobian J is
+    the transpose of the gradient of F.)
+ 
+    X = LSQNONLIN(PROBLEM) solves the non-linear least squares problem 
+    defined in PROBLEM. PROBLEM is a structure with the function FUN in 
+    PROBLEM.objective, the start point in PROBLEM.x0, the lower bounds in 
+    PROBLEM.lb, the upper bounds in PROBLEM.ub, the options structure in 
+    PROBLEM.options, and solver name 'lsqnonlin' in PROBLEM.solver. Use 
+    this syntax to solve at the command line a problem exported from 
+    OPTIMTOOL. The structure PROBLEM must have all the fields. 
+ 
+    [X,RESNORM] = LSQNONLIN(FUN,X0,...) returns 
+    the value of the squared 2-norm of the residual at X: sum(FUN(X).^2). 
+ 
+    [X,RESNORM,RESIDUAL] = LSQNONLIN(FUN,X0,...) returns the value of the 
+    residual at the solution X: RESIDUAL = FUN(X).
+ 
+    [X,RESNORM,RESIDUAL,EXITFLAG] = LSQNONLIN(FUN,X0,...) returns an 
+    EXITFLAG that describes the exit condition of LSQNONLIN. Possible 
+    values of EXITFLAG and the corresponding exit conditions are 
+ 
+      1  LSQNONLIN converged to a solution X.
+      2  Change in X smaller than the specified tolerance.
+      3  Change in the residual smaller than the specified tolerance.
+      4  Magnitude search direction smaller than the specified tolerance.
+      0  Maximum number of function evaluations or of iterations reached.
+     -1  Algorithm terminated by the output function.
+     -2  Bounds are inconsistent.
+     -4  Line search cannot sufficiently decrease the residual along the 
+          current search direction.
+ 
+    [X,RESNORM,RESIDUAL,EXITFLAG,OUTPUT] = LSQNONLIN(FUN,X0,...) returns a 
+    structure OUTPUT with the number of iterations taken in
+    OUTPUT.iterations, the number of function evaluations in
+    OUTPUT.funcCount, the algorithm used in OUTPUT.algorithm, the number
+    of CG iterations (if used) in OUTPUT.cgiterations, the first-order
+    optimality (if used) in OUTPUT.firstorderopt, and the exit message in
+    OUTPUT.message.
+ 
+    [X,RESNORM,RESIDUAL,EXITFLAG,OUTPUT,LAMBDA] = LSQNONLIN(FUN,X0,...) 
+    returns the set of Lagrangian multipliers, LAMBDA, at the solution: 
+    LAMBDA.lower for LB and LAMBDA.upper for UB.
+ 
+    [X,RESNORM,RESIDUAL,EXITFLAG,OUTPUT,LAMBDA,JACOBIAN] = LSQNONLIN(FUN,
+    X0,...) returns the Jacobian of FUN at X.   
+ 
+    Examples
+      FUN can be specified using @:
+         x = lsqnonlin(@myfun,[2 3 4])
+ 
+    where myfun is a MATLAB function such as:
+ 
+        function F = myfun(x)
+        F = sin(x);
+ 
+    FUN can also be an anonymous function:
+ 
+        x = lsqnonlin(@(x) sin(3*x),[1 4])
+ 
+    If FUN is parameterized, you can use anonymous functions to capture the 
+    problem-dependent parameters. Suppose you want to solve the non-linear 
+    least squares problem given in the function myfun, which is 
+    parameterized by its second argument c. Here myfun is an M-file 
+    function such as
+ 
+        function F = myfun(x,c)
+        F = [ 2*x(1) - exp(c*x(1))
+              -x(1) - exp(c*x(2))
+              x(1) - x(2) ];
+ 
+    To solve the least squares problem for a specific value of c, first 
+    assign the value to c. Then create a one-argument anonymous function 
+    that captures that value of c and calls myfun with two arguments. 
+    Finally, pass this anonymous function to LSQNONLIN:
+ 
+        c = -1; % define parameter first
+        x = lsqnonlin(@(x) myfun(x,c),[1;1])
+ 
+    See also OPTIMSET, LSQCURVEFIT, FSOLVE, @, INLINE.
+
+>> [params,resnorm,residual,exitflag,output] = lsqnonlin(costfun,params0,paramslb,paramsub,options);
+??? Undefined function or variable 'costfun'.
+
+>> costfun = @(pp) sqrt(abs(x-pp));
+>> 
+>> [params,resnorm,residual,exitflag,output] = lsqnonlin(costfun,params0,paramslb,paramsub,options);
+
+                                         Norm of      First-order 
+ Iteration  Func-count     f(x)          step          optimality   CG-iterations
+     0          2         319.103                           500
+     1          4         318.684    0.000426018            487            0
+     2          6         313.862      0.0052739            437            0
+     3          8         299.992      0.0182879            335            0
+     4         10          288.87       0.018276            278            0
+     5         12          282.42      0.0122335            252            0
+     6         14         266.632      0.0368004            180            0
+     7         16         256.757      0.0307097            140            0
+     8         18         250.255      0.0259359            113            0
+     9         20         249.275     0.00438066            110            0
+    10         22         245.611      0.0193828             86            0
+    11         24         243.547      0.0140783             61            0
+    12         26         242.451      0.0102135             45            0
+    13         28         242.147     0.00349924             41            0
+    14         30          241.67     0.00636948             34            0
+    15         32         241.377      0.0045562             30            0
+    16         34         241.342    0.000621015             28            0
+    17         36         241.026     0.00627542             23            0
+    18         38         240.773     0.00638076             16            0
+    19         40         240.673     0.00351347             14            0
+    20         42         240.557     0.00449553             11            0
+    21         44         240.497     0.00292551              9            0
+    22         46         240.484    0.000921178              6            0
+    23         48         240.479    0.000427899              5            0
+    24         50         240.469    0.000986787              4            0
+    25         52         240.469    6.94685e-05              4            0
+    26         54         240.465    0.000530315              4            0
+    27         56          240.46    0.000705565              3            0
+    28         58         240.457    0.000566045              2            0
+    29         60         240.456     0.00023366              1            0
+    30         62         240.456    9.32698e-05              1            0
+Optimization terminated: relative function value
+ changing by less than OPTIONS.TolFun.
+>> params
+
+params =
+
+         0.239169087626051
+
+>> median(x)
+
+ans =
+
+         0.239523459242231
+
+>> 

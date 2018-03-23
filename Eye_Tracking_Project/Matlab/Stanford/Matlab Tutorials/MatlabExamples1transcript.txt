@@ -1,0 +1,643 @@
+>> x = (randn(1,100).^2)*10 + 20;
+>> size(x)
+
+ans =
+
+     1   100
+
+>> figure;hist(x,100)
+>> figure;hist(x,30) 
+>> mn = mean(x);  % compute mean
+>> mn
+
+mn =
+
+   27.4905
+
+>> sd = std(x);   % compute standard deviation
+>> sd
+
+sd =
+
+    9.6575
+
+>> ptiles = prctile(x,[16 50 84]);  % compute percentiles (median and central 68%)
+>> 
+>> 
+>> ptiles
+
+ptiles =
+
+   20.2753   23.9612   34.3209
+
+>> 
+>> 
+>> figure;
+>> hold on;
+>> hist(x,20);  % plot a histogram using twenty bins
+>> ax = axis;   % get the current axis bounds
+>> ax
+
+ax =
+
+    20    70     0    40
+
+>> h1 = plot([mn mn],      ax(3:4),'r-','LineWidth',2);
+>> h1
+
+h1 =
+
+  173.0026
+
+>> get(h1)
+           DisplayName: ''
+            Annotation: [1x1 hg.Annotation]
+                 Color: [1 0 0]
+             EraseMode: 'normal'
+             LineStyle: '-'
+             LineWidth: 2
+                Marker: 'none'
+            MarkerSize: 6
+       MarkerEdgeColor: 'auto'
+       MarkerFaceColor: 'none'
+                 XData: [27.4905 27.4905]
+                 YData: [0 40]
+                 ZData: [1x0 double]
+          BeingDeleted: 'off'
+         ButtonDownFcn: []
+              Children: [0x1 double]
+              Clipping: 'on'
+             CreateFcn: []
+             DeleteFcn: []
+            BusyAction: 'queue'
+      HandleVisibility: 'on'
+               HitTest: 'on'
+         Interruptible: 'on'
+              Selected: 'off'
+    SelectionHighlight: 'on'
+                   Tag: ''
+                  Type: 'line'
+         UIContextMenu: []
+              UserData: []
+               Visible: 'on'
+                Parent: 171.0026
+             XDataMode: 'manual'
+           XDataSource: ''
+           YDataSource: ''
+           ZDataSource: ''
+
+>> set(h1,'LineWidth',10)
+>> set(h1,'LineStyle','--');
+>> h2 = plot([mn-sd mn-sd],ax(3:4),'r-','LineWidth',2);
+>> h3 = plot([mn+sd mn+sd],ax(3:4),'r-','LineWidth',2);
+>> ax
+
+ax =
+
+    20    70     0    40
+
+>> axis off
+>> ax = axis;
+>> ax
+
+ax =
+
+    10    70     0    40
+
+>> ptiles
+
+ptiles =
+
+   20.2753   23.9612   34.3209
+
+>> h4 = [];
+>> for p=1:length(ptiles)
+  h4(p) = plot(repmat(ptiles(p),[1 2]),ax(3:4),'g-','LineWidth',2);
+end
+>> h4
+
+h4 =
+
+  177.0026  178.0026  179.0026
+
+>> axis on
+>> close all
+>> % generate some fake data
+>> x = (randn(1,100).^2)*10 + 20;
+>> 
+>> % compute some simple data summary metrics
+>> mn = mean(x);  % compute mean
+>> sd = std(x);   % compute standard deviation
+>> ptiles = prctile(x,[16 50 84]);  % compute percentiles (median and central 68%)
+>> 
+>> % make a figure
+>> figure;
+>> hold on;
+>> hist(x,20);  % plot a histogram using twenty bins
+>> ax = axis;   % get the current axis bounds
+>>   % plot lines showing mean and +/- 1 std dev
+>> h1 = plot([mn mn],      ax(3:4),'r-','LineWidth',2);
+>> h2 = plot([mn-sd mn-sd],ax(3:4),'r-','LineWidth',2);
+>> h3 = plot([mn+sd mn+sd],ax(3:4),'r-','LineWidth',2);
+>>   % plot lines showing percentiles
+>> h4 = [];
+>> for p=1:length(ptiles)
+  h4(p) = plot(repmat(ptiles(p),[1 2]),ax(3:4),'g-','LineWidth',2);
+end
+>> legend([h1 h4(1)],{'Mean and std dev' 'Percentiles'});
+>> repmat(ptiles(p),[1 10])
+
+ans =
+
+  Columns 1 through 8
+
+   38.0494   38.0494   38.0494   38.0494   38.0494   38.0494   38.0494   38.0494
+
+  Columns 9 through 10
+
+   38.0494   38.0494
+
+>> xlabel('Value');
+>> ylabel('Frequency');
+>> % define
+>> numsim = 10000;   % number of simulations to run
+>> samplesize = 50;  % number of data points in each sample
+>> clc
+
+>> 
+>> % define
+>> numsim = 10000;   % number of simulations to run
+>> samplesize = 50;  % number of data points in each sample
+>> results = zeros(1,numsim);
+>> num=1
+
+num =
+
+     1
+
+>>   data = randn(samplesize,2);
+>> size(data)
+
+ans =
+
+    50     2
+
+>> data
+
+data =
+
+    0.6353    0.9901
+   -0.6014    0.2189
+    0.5512    0.2617
+   -1.0998    1.2134
+    0.0860   -0.2747
+   -2.0046   -0.1331
+   -0.4931   -1.2705
+    0.4620   -1.6636
+   -0.3210   -0.7036
+    1.2366    0.2809
+   -0.6313   -0.5412
+   -2.3252   -1.3335
+   -1.2316    1.0727
+    1.0556   -0.7121
+   -0.1132   -0.0113
+    0.3792   -0.0008
+    0.9442   -0.2494
+   -2.1204    0.3966
+   -0.6447   -0.2640
+   -0.7043   -1.6640
+   -1.0181   -1.0290
+   -0.1821    0.2431
+    1.5210   -1.2566
+   -0.0384   -0.3472
+    1.2274   -0.9414
+   -0.6962   -1.1746
+    0.0075   -1.0211
+   -0.7829   -0.4017
+    0.5869    0.1737
+   -0.2512   -0.1161
+    0.4801    1.0641
+    0.6682   -0.2454
+   -0.0783   -1.5175
+    0.8892    0.0097
+    2.3093    0.0714
+    0.5246    0.3165
+   -0.0118    0.4998
+    0.9131    1.2781
+    0.0559   -0.5478
+   -1.1071    0.2608
+    0.4855   -0.0132
+   -0.0050   -0.5803
+   -0.2762    2.1363
+    1.2765   -0.2576
+    1.8634   -1.4095
+   -0.5226    1.7701
+    0.1034    0.3255
+   -0.8076   -1.1190
+    0.6804    0.6204
+   -2.3646    1.2698
+
+>> corr(data(:,1),data(:,2))
+
+ans =
+
+   -0.0856
+
+>>   results(num) = corr(data(:,1),data(:,2));
+>> results(1:10)
+
+ans =
+
+  Columns 1 through 8
+
+   -0.0856         0         0         0         0         0         0         0
+
+  Columns 9 through 10
+
+         0         0
+
+>> % loop over simulations
+>> for num=1:numsim
+  
+  % draw two sets of random numbers, each from the normal distribution
+  data = randn(samplesize,2);
+  
+  % compute the correlation between the two sets of numbers and store the result
+  results(num) = corr(data(:,1),data(:,2));
+  
+end
+>> results(1:10)
+
+ans =
+
+  Columns 1 through 8
+
+   -0.1426    0.1098    0.1689   -0.1593   -0.0976   -0.0397    0.1220   -0.0286
+
+  Columns 9 through 10
+
+   -0.1401    0.2954
+
+>> % visualize the results
+>> figure; hold on;
+>> hist(results,100);
+>> ax = axis;
+>> ax
+
+ax =
+
+   -0.8000    0.6000         0  350.0000
+
+>> mx = max(abs(ax(1:2)));  % make the x-axis symmetric around 0
+>> mx
+
+mx =
+
+    0.8000
+
+>> axis([-mx mx ax(3:4)]);
+>> xlabel('Correlation value');
+>> ylabel('Frequency');
+>> val = prctile(abs(results),95);
+>> val
+
+val =
+
+    0.2821
+
+>> 
+>> % visualize this on the figure
+>> ax = axis;
+>> h1 = plot([val val],ax(3:4),'r-');
+>> h2 = plot(-[val val],ax(3:4),'r-');
+>> legend(h1,'Central 95%');
+>> title(sprintf('+/- %.4f',val));
+>> 
+>> 
+>> 
+>> rand(1,50)
+
+ans =
+
+  Columns 1 through 8
+
+    0.8147    0.9058    0.1270    0.9134    0.6324    0.0975    0.2785    0.5469
+
+  Columns 9 through 16
+
+    0.9575    0.9649    0.1576    0.9706    0.9572    0.4854    0.8003    0.1419
+
+  Columns 17 through 24
+
+    0.4218    0.9157    0.7922    0.9595    0.6557    0.0357    0.8491    0.9340
+
+  Columns 25 through 32
+
+    0.6787    0.7577    0.7431    0.3922    0.6555    0.1712    0.7060    0.0318
+
+  Columns 33 through 40
+
+    0.2769    0.0462    0.0971    0.8235    0.6948    0.3171    0.9502    0.0344
+
+  Columns 41 through 48
+
+    0.4387    0.3816    0.7655    0.7952    0.1869    0.4898    0.4456    0.6463
+
+  Columns 49 through 50
+
+    0.7094    0.7547
+
+>> rand(1,50)
+>> 
+>> 
+>> 
+>> figure;hist(rand(1,1000),100)
+>> figure;hist(rand(1,10000),100)
+>> rand(1,50)
+
+ans =
+
+  Columns 1 through 8
+
+    0.2743    0.1495    0.3343    0.8330    0.2336    0.0692    0.4947    0.1222
+
+  Columns 9 through 16
+
+    0.4026    0.0912    0.7205    0.3423    0.5663    0.6545    0.6525    0.7009
+
+  Columns 17 through 24
+
+    0.3011    0.0855    0.6334    0.2664    0.8943    0.3003    0.7151    0.3304
+
+  Columns 25 through 32
+
+    0.3649    0.5923    0.9052    0.2645    0.9498    0.7387    0.0045    0.8507
+
+  Columns 33 through 40
+
+    0.6956    0.5624    0.3377    0.3328    0.0773    0.4583    0.6572    0.5720
+
+  Columns 41 through 48
+
+    0.4021    0.9347    0.3605    0.9477    0.0301    0.4411    0.7007    0.7030
+
+  Columns 49 through 50
+
+    0.5102    0.6122
+
+>> mat2str(rand(1,50))
+
+ans =
+
+[0.746368943947868 0.801435610394844 0.336724978708169 0.564093006094713 0.85526607041321 0.589158603314194 0.508241196713054 0.853430500168208 0.68379834206274 0.106338256052922 0.501956829307045 0.0191666654402798 0.442609383187404 0.907175431054674 0.0446696238732692 0.945190804272722 0.180380359690636 0.369908146037757 0.205239082352517 0.095585844841468 0.432740934798816 0.277560941256448 0.100858209884632 0.498920454459566 0.239034073525407 0.349601331184063 0.558262290294083 0.548066911064257 0.421273930541683 0.385499666100542 0.380663779179727 0.280728362871376 0.179912384250702 0.127284024791542 0.0156902244781708 0.75308796929176 0.504955187751938 0.722110239780998 0.761100805058562 0.268948879578651 0.193621982657256 0.064148789564475 0.425374317376553 0.702146989068384 0.977320645148091 0.55158273200396 0.0438067766504862 0.582148770885677 0.278375734918771 0.542194249003883]
+
+>> mat2str(rand(1,50),2)
+
+ans =
+
+[0.44 0.12 0.38 0.76 0.92 0.69 0.97 0.13 0.65 0.39 0.56 0.2 0.39 0.34 0.36 0.37 0.12 0.5 0.82 0.34 0.5 0.12 0.58 0.52 0.36 0.86 0.34 0.46 0.24 0.77 0.27 0.53 0.53 0.87 0.94 0.049 0.98 0.63 0.073 0.21 0.36 0.43 0.76 0.92 0.63 0.96 0.76 0.53 0.85 0.82]
+
+>> 
+>> % generate some fake data
+>> x = [2.5 2.8 3.4 2 1.2 2.1 1.8 2.8 1.1 2.2 3.2 0.61 3 0.53 2 0.45 2 ...
+     1 -0.53 1.2 2.2 2.5 1.9 1.9 2.8 2.8 1.3 3.1 2.7 2.3 0.47 2.1 1.5 3.8 ...
+     3 2.8 0.97 2.5 2.3 3.9 0.54 3.6 2.3 2.7 4.4 2.7 0.44 2.1 1.7 2.1].^2;
+>> y = [5.9 6.4 3.7 3.1 5.1 3.6 6.2 5.1 3 4.7 6 1.2 6.1 -0.51 4.4 3 ...
+     5.1 2.2 0.14 3.2 7.2 7.4 4 4.5 5.3 2 4.9 3 4.6 3.9 3.5 4.2 3.6 5.4 ...
+     4.5 6.1 2.6 4.9 3.5 4.8 1 6.8 4.2 3.7 7.5 1.7 2.8 1.8 3.6 4.3].^2;
+>> 
+>> 
+>> size(x)
+
+ans =
+
+     1    50
+
+>> size(y)
+
+ans =
+
+     1    50
+
+>> figure;scatter(x,y,'r.');
+>> corr(
+>> 
+>> 
+>> actualcorr = corr(x(:),y(:));
+>> actualcorr
+
+actualcorr =
+
+    0.5645
+
+>> corr(x,y)
+
+ans =
+
+  Columns 1 through 13
+
+   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN
+   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN
+   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN
+...
+
+>> actualcorr 
+
+actualcorr =
+
+    0.5645
+
+>> results = zeros(1,10000);
+>> num=1
+
+num =
+
+     1
+
+>> size(x)
+
+ans =
+
+     1    50
+
+>> size(y)
+
+ans =
+
+     1    50
+
+>> [17 10 1 9 10 20 ...]
+>> 
+>>   ix = ceil(length(x) * rand(1,length(x)));
+>> ix
+
+ix =
+
+  Columns 1 through 13
+
+     7    39    31    20    43     2     5    48    20    27    46    18    34
+
+  Columns 14 through 26
+
+    37    12    28    23    31    28    26    15    44    47    41    49    27
+
+  Columns 27 through 39
+
+     6    33    10    43    48     6    15    40    23    25     2    29    29
+
+  Columns 40 through 50
+
+    38     4    40    10    27    47    50    49    16    38    11
+
+>> % draw bootstrap samples and compute correlation values
+>> results = zeros(1,10000);
+>> for num=1:10000
+
+  % vector of indices (each element is a random integer between 
+  % 1 and n where n is the number of data points)
+  ix = ceil(length(x) * rand(1,length(x)));
+
+  % compute correlation using those data points
+  results(num) = corr(x(ix)',y(ix)');
+
+end
+>> 
+>> figure;hist(results)
+>> figure;hist(results,100)
+>> ptiles = prctile(results,[2.5 97.5]);
+>> ptiles
+
+ptiles =
+
+    0.3272    0.7576
+
+>> % visualize
+>> figure; hold on;
+>> scatter(x,y,'ro');
+>> % visualize
+>> figure; hold on;
+>> scatter(x,y,'ro');
+>> xlabel('x');
+>> ylabel('y');
+>> title(sprintf('r = %.4f; 95%% confidence interval = [%.4f %.4f]',actualcorr,ptiles(1),ptiles(2)));
+>> clc
+
+>> % generate some fake data
+>> x = [0.84 0.29 0.84 0.85 0.021 0.52 1 0.64 0.27 0.55 0.078 0.26 0.78 0.67 0.37 0.22 0.62 0.39 0.71 0.24];
+>> y = [0.52 0.38 0.21 0.27 0.83 0.65 0.64 0.26 0.34 0.55 0.87 0.21 0.22 0.84 0.42 0.23 0.68 0.68 0.64 0.61];
+>> size(x)
+
+ans =
+
+     1    20
+
+>> size(y)
+
+ans =
+
+     1    20
+
+>> scatter(x,y)
+>> scatter(x,y)
+>> corr(x(:),y(:))
+
+ans =
+
+   -0.2006
+
+>> actualcorr = corr(x(:),y(:));
+>> scatter(x,y)
+>>   ix = randperm(length(x));
+>> randperm(5)
+
+ans =
+
+     3     2     1     4     5
+
+>> randperm(5)
+
+ans =
+
+     4     3     1     5     2
+
+>> randperm(5)
+
+ans =
+
+     3     2     5     1     4
+
+>> randperm(5)
+
+ans =
+
+     2     3     4     5     1
+
+>>   ix = randperm(length(x));
+>> ix
+
+ix =
+
+  Columns 1 through 13
+
+    16     5    20    14     8    13    12    19    10     3    15     2     7
+
+  Columns 14 through 20
+
+     4    17    18    11     9     6     1
+
+>> % perform randomization
+>> results = zeros(1,10000);
+>> for num=1:10000
+
+  % vector of indices (a random ordering of the integers between
+  % 1 and n where n is the number of data points)
+  ix = randperm(length(x));
+
+  % compute correlation between randomly shuffled x-values and the y-values
+  results(num) = corr(x(ix)',y');
+
+end
+>> % visualize
+>> figure; hold on;
+>> hist(results,100);
+>> results = zeros(1,100);
+>> for num=1:100
+
+  % vector of indices (a random ordering of the integers between
+  % 1 and n where n is the number of data points)
+  ix = randperm(length(x));
+
+  % compute correlation between randomly shuffled x-values and the y-values
+  results(num) = corr(x(ix)',y');
+
+end
+>> figure; hold on;
+>> hist(results,100);
+>> results = zeros(1,10000);
+>> for num=1:10000
+
+  % vector of indices (a random ordering of the integers between
+  % 1 and n where n is the number of data points)
+  ix = randperm(length(x));
+
+  % compute correlation between randomly shuffled x-values and the y-values
+  results(num) = corr(x(ix)',y');
+
+end
+>> 
+>> ax = axis;
+>> plot(repmat(actualcorr,[1 2]),ax(3:4),'r-');
+>> sum(abs(results) > abs(actualcorr))
+
+ans =
+
+        3901
+
+>> pval = sum(abs(results) > abs(actualcorr)) / length(results);
+>> pval
+
+pval =
+
+    0.3901
+
+>> title(sprintf('r = %.4f; p-value (two-tailed) = %.6f',actualcorr,pval));

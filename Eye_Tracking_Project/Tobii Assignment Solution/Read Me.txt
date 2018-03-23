@@ -1,0 +1,16 @@
+*****************************************************************
+Instructions to set up the matlab code for Gaze Transition Matrix
+*****************************************************************
+1. Extract the zip file to any folder of your local drive.
+2. Open Matlab and set the path to this folder using setpath tool.
+3. Input File Path: Make sure to change the input file path in the
+   GazeTransitionMatrix.m file. 
+4. Make sure that the importfile.m is in the same folder as the rest.
+5. Input: eyetracking_data.tsv
+6. Output: GTM matrix, fixationsmapping.xlsx
+7. Run the code and see the visualizations of grid and mesh.
+
+
+*****************************************************************
+-----------------------Thank you---------------------------------
+*****************************************************************

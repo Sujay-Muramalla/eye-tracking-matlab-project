@@ -1,0 +1,5 @@
+To find your eye tracker you need to install Bonjour from Apple. Bonjour is not required during compile time,
+but none of the examples (or your upcoming new eye tracking application) will work if Bonjour is not present
+at run time.
+
+Download Bonjour from http://support.apple.com/kb/DL999

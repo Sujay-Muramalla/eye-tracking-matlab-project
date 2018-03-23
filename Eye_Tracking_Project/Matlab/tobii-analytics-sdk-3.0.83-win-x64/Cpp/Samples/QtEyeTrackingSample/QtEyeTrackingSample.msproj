@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Compile" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$(MSBuildExtensionsPath32)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+
+	<!--
+		Build properties
+    -->
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+	</PropertyGroup>
+
+	<!--+
+	    |
+	    | This target runs qmake
+	    |
+	    +-->
+	<Target Name="QMake">
+		<Message Text="Generating vcproj file..." />
+		<Exec Command="qmake.bat $(Platform) $(Configuration)"/>
+	</Target>	
+
+		<!--+
+	    |
+	    | This target compiles the final binary
+	    |
+	    +-->
+	<Target Name="Compile" DependsOnTargets="QMake">
+		<Message Text="Compiling QtEyeTrackingSample ..." />
+		<VCBuild Projects="QtEyeTrackingSample.vcproj" Configuration="$(Configuration)" Platform="$(Platform)" Rebuild="true"/>
+	</Target>
+	
+</Project>

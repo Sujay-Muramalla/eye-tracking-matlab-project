@@ -1,0 +1,881 @@
+>> x1 = randn(50,1);
+>> x2 = randn(50,1);
+>> y = (2*x1 + x2 + randn(size(x1))) > 1;
+>> y
+
+y =
+
+     0
+     1
+     1
+     1
+     0
+     0
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+     1
+     0
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+     1
+     0
+     1
+     1
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+
+>> figure; hold on;
+>> y==0
+
+ans =
+
+     1
+     0
+     0
+     0
+     1
+     1
+     1
+     1
+     1
+     1
+     0
+     0
+     1
+     1
+     1
+     1
+     0
+     0
+     1
+     0
+     1
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+     0
+     1
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+     0
+     1
+     0
+     0
+     0
+     1
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+
+>> h1 = scatter(x1(y==0),x2(y==0),50,'k','filled');  % black dots for 0
+>> h2 = scatter(x1(y==1),x2(y==1),50,'w','filled');  % white dots for 1
+>> h1
+
+h1 =
+
+  867.0001
+
+>> h2
+
+h2 =
+
+  896.0001
+
+>> set([h1 h2],'MarkerEdgeColor',[.5 .5 .5]);        % outline dots in gray
+>> legend([h1 h2],{'y==0' 'y==1'},'Location','NorthEastOutside');
+>> xlabel('x_1');
+>> ylabel('x_2');
+>> 
+>> options = optimset('Display','iter','FunValCheck','on', ...
+                   'MaxFunEvals',Inf,'MaxIter',Inf, ...
+'TolFun',1e-6,'TolX',1e-6);
+>> logisticfun = @(x) 1./(1+exp(-x));
+>> X = [x1 x2];
+>> size(X)
+
+ans =
+
+    50     2
+
+>> X(:,end+1) = 1;  % we need to add a constant regressor
+>> size(X)
+
+ans =
+
+    50     3
+
+>> params0 = zeros(1,size(X,2));
+>> params0
+
+params0 =
+
+     0     0     0
+
+>> paramslb = [];  % [] means no bounds
+>> paramsub = [];
+>> costfun = @(pp) -sum((y .* log(logisticfun(X*pp')+eps)) + ...
+                     ((1-y) .* log(1-logisticfun(X*pp')+eps)));
+>> eps
+
+ans =
+
+   2.2204e-16
+
+>> log(0)
+
+ans =
+
+  -Inf
+
+>> log(0+eps)
+
+ans =
+
+  -36.0437
+
+>> [params,resnorm,residual,exitflag,output] = ...
+  lsqnonlin(costfun,params0,paramslb,paramsub,options);
+Warning: Large-scale method requires at least as many equations as variables;
+ using line-search method instead.
+> In optim/private/lsqncommon at 169
+  In lsqnonlin at 182
+
+                                                     Directional 
+ Iteration  Func-count    Residual     Step-size      derivative    Lambda
+     0           4         1201.13
+     1          12         293.672         1.44           -29.7        5.39868 
+     2          19          284.48         1.18        -0.00275        105.845 
+     3          27         282.673         4.73         -0.0019         111.42 
+     4          34         282.215        0.236        -0.00105        19.3949 
+     5          42         282.103         1.43       -5.43e-06        33.8968 
+     6          49         282.066        0.405       -2.15e-06        33.9286 
+     7          57         282.054         1.36       -8.41e-08        34.2903 
+     8          64          282.05        0.409       -1.27e-07        34.2944 
+     9          72         282.048         1.37        1.35e-07        34.3367 
+    10          79         282.047        0.411        -9.2e-08        34.3374 
+    11          87         282.047         1.37       -1.42e-08        34.3435 
+    12          94         282.047        0.411        1.44e-08        34.3436 
+    13         102         282.047         1.37        2.48e-09        34.3445 
+    14         109         282.047        0.411       -6.51e-10        34.3445 
+    15         117         282.047         1.38         3.2e-09        34.3446 
+    16         124         282.047        0.411       -7.48e-10        34.3446 
+    17         132         282.047         1.38        -4.6e-10        34.3446 
+    18         139         282.047        0.411        7.63e-10        34.3446 
+    19         147         282.047         1.38        1.98e-10        34.3446 
+    20         154         282.047        0.412       -8.25e-10        34.3446 
+    21         162         282.047         1.42       -2.55e-10        34.3447 
+    22         169         282.047        0.415        2.98e-10        34.3447 
+    23         177         282.047         1.27        3.71e-11        34.3447 
+    24         184         282.047        0.411       -4.03e-11        34.3447 
+    25         191         282.047         1.56       -1.44e-11        34.3447 
+    26         198         282.047        0.462         8.3e-12        34.3447 
+Optimization terminated: magnitude of search direction less than TolX.
+>> params
+
+params =
+
+    3.2102    1.8257   -0.7281
+
+>> y
+
+y =
+
+     0
+     1
+     1
+     1
+     0
+     0
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+     1
+     0
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+     1
+     0
+     1
+     1
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+
+>> logisticfun(X*params')
+
+ans =
+
+    0.0370
+    0.0154
+    0.8501
+    0.4435
+    0.5803
+    0.0392
+    0.3950
+    0.0321
+    0.6743
+    0.7072
+    0.7192
+    0.9962
+    0.0616
+    0.0054
+    0.2487
+    0.0065
+    0.5101
+    0.9054
+    0.2032
+    0.9712
+    0.0046
+    0.9687
+    0.1392
+    0.0300
+    0.9677
+    0.0087
+    0.2856
+    0.5996
+    0.6404
+    0.0202
+    0.0282
+    0.9515
+    0.9451
+    0.2019
+    0.9963
+    0.6310
+    0.9284
+    0.7505
+    0.1907
+    0.9793
+    0.9695
+    0.5792
+    0.0040
+    0.5521
+    0.0084
+    0.5598
+    0.5562
+    0.0178
+    0.0199
+    0.0640
+
+>> modelfit = logisticfun(X*params') >= 0.5;
+>> modelfit
+
+modelfit =
+
+     0
+     0
+     1
+     0
+     1
+     0
+     0
+     0
+     1
+     1
+     1
+     1
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     1
+     1
+     0
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+     1
+     0
+     1
+     1
+     1
+     0
+     1
+     0
+     1
+     1
+     0
+     0
+     0
+
+>> y
+
+y =
+
+     0
+     1
+     1
+     1
+     0
+     0
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+     1
+     0
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+     1
+     0
+     1
+     1
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     0
+
+>> modelfit
+
+modelfit =
+
+     0
+     0
+     1
+     0
+     1
+     0
+     0
+     0
+     1
+     1
+     1
+     1
+     0
+     0
+     0
+     0
+     1
+     1
+     0
+     1
+     0
+     1
+     0
+     0
+     1
+     0
+     0
+     1
+     1
+     0
+     0
+     1
+     1
+     0
+     1
+     1
+     1
+     1
+     0
+     1
+     1
+     1
+     0
+     1
+     0
+     1
+     1
+     0
+     0
+     0
+
+>> y'
+
+ans =
+
+  Columns 1 through 23
+
+     0     1     1     1     0     0     0     0     0     0     1     1     0     0     0     0     1     1     0     1     0     1     0
+
+  Columns 24 through 46
+
+     0     1     0     0     0     1     0     0     1     1     0     1     1     1     1     0     1     1     1     0     1     0     0
+
+  Columns 47 through 50
+
+     1     0     0     0
+
+>> modelfit'
+
+ans =
+
+  Columns 1 through 23
+
+     0     0     1     0     1     0     0     0     1     1     1     1     0     0     0     0     1     1     0     1     0     1     0
+
+  Columns 24 through 46
+
+     0     1     0     0     1     1     0     0     1     1     0     1     1     1     1     0     1     1     1     0     1     0     1
+
+  Columns 47 through 50
+
+     1     0     0     0
+
+>> scatter(y,modelfit)
+>> scatter(y,modelfit)
+>> imagesc([y';modelfit'])
+>> colormap(gray)
+>> figure;imagesc([y';(rand(1,50)>.5)]);
+>> colormap(gray)
+>> sum(modelfit==y) 
+
+ans =
+
+    43
+
+>> 43/50*100
+
+ans =
+
+    86
+
+>> pctcorrect = sum(modelfit==y) / length(y) * 100;
+>> pctcorrect
+
+pctcorrect =
+
+    86
+
+>> close all
+>> % visualize the data
+>> figure; hold on;
+>> h1 = scatter(x1(y==0),x2(y==0),50,'k','filled');  % black dots for 0
+>> h2 = scatter(x1(y==1),x2(y==1),50,'w','filled');  % white dots for 1
+>> set([h1 h2],'MarkerEdgeColor',[.5 .5 .5]);        % outline dots in gray
+>> legend([h1 h2],{'y==0' 'y==1'},'Location','NorthEastOutside');
+>> xlabel('x_1');
+>> ylabel('x_2');ax = axis;
+>> ax
+
+ax =
+
+   -2.0000    2.0000   -2.0000    2.5000
+
+>> xvals = linspace(ax(1),ax(2),100);
+>> xvals
+
+xvals =
+
+  Columns 1 through 14
+
+   -2.0000   -1.9596   -1.9192   -1.8788   -1.8384   -1.7980   -1.7576   -1.7172   -1.6768   -1.6364   -1.5960   -1.5556   -1.5152   -1.4747
+
+  Columns 15 through 28
+
+   -1.4343   -1.3939   -1.3535   -1.3131   -1.2727   -1.2323   -1.1919   -1.1515   -1.1111   -1.0707   -1.0303   -0.9899   -0.9495   -0.9091
+
+  Columns 29 through 42
+
+   -0.8687   -0.8283   -0.7879   -0.7475   -0.7071   -0.6667   -0.6263   -0.5859   -0.5455   -0.5051   -0.4646   -0.4242   -0.3838   -0.3434
+
+  Columns 43 through 56
+
+   -0.3030   -0.2626   -0.2222   -0.1818   -0.1414   -0.1010   -0.0606   -0.0202    0.0202    0.0606    0.1010    0.1414    0.1818    0.2222
+
+  Columns 57 through 70
+
+    0.2626    0.3030    0.3434    0.3838    0.4242    0.4646    0.5051    0.5455    0.5859    0.6263    0.6667    0.7071    0.7475    0.7879
+
+  Columns 71 through 84
+
+    0.8283    0.8687    0.9091    0.9495    0.9899    1.0303    1.0707    1.1111    1.1515    1.1919    1.2323    1.2727    1.3131    1.3535
+
+  Columns 85 through 98
+
+    1.3939    1.4343    1.4747    1.5152    1.5556    1.5960    1.6364    1.6768    1.7172    1.7576    1.7980    1.8384    1.8788    1.9192
+
+  Columns 99 through 100
+
+    1.9596    2.0000
+
+>> yvals = linspace(ax(3),ax(4),100);
+>> yvals
+
+yvals =
+
+  Columns 1 through 14
+
+   -2.0000   -1.9545   -1.9091   -1.8636   -1.8182   -1.7727   -1.7273   -1.6818   -1.6364   -1.5909   -1.5455   -1.5000   -1.4545   -1.4091
+
+  Columns 15 through 28
+
+   -1.3636   -1.3182   -1.2727   -1.2273   -1.1818   -1.1364   -1.0909   -1.0455   -1.0000   -0.9545   -0.9091   -0.8636   -0.8182   -0.7727
+
+  Columns 29 through 42
+
+   -0.7273   -0.6818   -0.6364   -0.5909   -0.5455   -0.5000   -0.4545   -0.4091   -0.3636   -0.3182   -0.2727   -0.2273   -0.1818   -0.1364
+
+  Columns 43 through 56
+
+   -0.0909   -0.0455         0    0.0455    0.0909    0.1364    0.1818    0.2273    0.2727    0.3182    0.3636    0.4091    0.4545    0.5000
+
+  Columns 57 through 70
+
+    0.5455    0.5909    0.6364    0.6818    0.7273    0.7727    0.8182    0.8636    0.9091    0.9545    1.0000    1.0455    1.0909    1.1364
+
+  Columns 71 through 84
+
+    1.1818    1.2273    1.2727    1.3182    1.3636    1.4091    1.4545    1.5000    1.5455    1.5909    1.6364    1.6818    1.7273    1.7727
+
+  Columns 85 through 98
+
+    1.8182    1.8636    1.9091    1.9545    2.0000    2.0455    2.0909    2.1364    2.1818    2.2273    2.2727    2.3182    2.3636    2.4091
+
+  Columns 99 through 100
+
+    2.4545    2.5000
+
+>> size(xvals)
+
+ans =
+
+     1   100
+
+>> size(yvals)
+
+ans =
+
+     1   100
+
+>> [xx,yy] = meshgrid(xvals,yvals);
+>> size(xx)
+
+ans =
+
+   100   100
+
+>> xx(1,:)
+
+ans =
+
+  Columns 1 through 14
+
+   -2.0000   -1.9596   -1.9192   -1.8788   -1.8384   -1.7980   -1.7576   -1.7172   -1.6768   -1.6364   -1.5960   -1.5556   -1.5152   -1.4747
+
+  Columns 15 through 28
+
+   -1.4343   -1.3939   -1.3535   -1.3131   -1.2727   -1.2323   -1.1919   -1.1515   -1.1111   -1.0707   -1.0303   -0.9899   -0.9495   -0.9091
+
+  Columns 29 through 42
+
+   -0.8687   -0.8283   -0.7879   -0.7475   -0.7071   -0.6667   -0.6263   -0.5859   -0.5455   -0.5051   -0.4646   -0.4242   -0.3838   -0.3434
+
+  Columns 43 through 56
+
+   -0.3030   -0.2626   -0.2222   -0.1818   -0.1414   -0.1010   -0.0606   -0.0202    0.0202    0.0606    0.1010    0.1414    0.1818    0.2222
+
+  Columns 57 through 70
+
+    0.2626    0.3030    0.3434    0.3838    0.4242    0.4646    0.5051    0.5455    0.5859    0.6263    0.6667    0.7071    0.7475    0.7879
+
+  Columns 71 through 84
+
+    0.8283    0.8687    0.9091    0.9495    0.9899    1.0303    1.0707    1.1111    1.1515    1.1919    1.2323    1.2727    1.3131    1.3535
+
+  Columns 85 through 98
+
+    1.3939    1.4343    1.4747    1.5152    1.5556    1.5960    1.6364    1.6768    1.7172    1.7576    1.7980    1.8384    1.8788    1.9192
+
+  Columns 99 through 100
+
+    1.9596    2.0000
+
+>> yy(1,:)
+
+ans =
+
+  Columns 1 through 23
+
+    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2
+
+  Columns 24 through 46
+
+    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2
+
+  Columns 47 through 69
+
+    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2
+
+  Columns 70 through 92
+
+    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2    -2
+
+  Columns 93 through 100
+
+    -2    -2    -2    -2    -2    -2    -2    -2
+
+>> figure;imagesc(xx);
+>> colormap(gray);
+>> colorbar
+>> xx
+
+xx =
+
+  Columns 1 through 14
+
+   -2.0000   -1.9596   -1.9192   -1.8788   -1.8384   -1.7980   -1.7576   -1.7172   -1.6768   -1.6364   -1.5960   -1.5556   -1.5152   -1.4747
+
+>> figure;imagesc(yy);colormap(gray);colorbar;
+>> X = [xx(:) yy(:)];
+>> X(:,end+1) = 1;
+>> size(X)
+
+ans =
+
+       10000           3
+
+>> outputimage = reshape(logisticfun(X*params'),[length(yvals) length(xvals)]);
+>> size(outputimage)
+
+ans =
+
+   100   100
+
+>> h3 = imagesc(outputimage,[0 1]);  % the range of the logistic function is 0 to 1
+>> set(h3,'XData',xvals,'YData',yvals);
+>> colormap(hot);
+>> colorbar;
+>> 
+>> [c4,h4] = contour(xvals,yvals,outputimage,[.5 .5]);
+>> set(h4,'LineWidth',3,'LineColor',[0 0 1]);  % make the line thick and blue
+>> uistack(h3,'bottom');
+>> uistack(h4,'top');
+>> ax
+
+ax =
+
+   -2.0000    2.0000   -2.0000    2.5000
+
+>> axis(ax);
+>> pctcorrect
+
+pctcorrect =
+
+    86
+
+>> title(sprintf('Classification accuracy is %.1f%%',pctcorrect));
+>> figure; hold on;
+>> h1 = surf(xvals,yvals,outputimage);
+>> Warning: Mac X11-based OpenGL rendering is currently unavailable.
+>> set(h1,'EdgeAlpha',0);  % don't show the edges of the surface
+>> 
+>> colormap(hot);
+>> xlabel('x_1');
+>> ylabel('x_2');
+>> zlabel('y');
+>> view(-11,42);  % set the viewing angle
+>> 
+>> set(gca,'XGrid','on','XMinorGrid','on', ...
+        'YGrid','on','YMinorGrid','on', ...
+        'ZGrid','on','ZMinorGrid','on');
+>> 
+>> clc
+
+>> classA = bsxfun(@times,[1.5 1]',randn(2,100));
+>> 
+>> 
+>> size(classA)
+
+ans =
+
+     2   100
+
+>> classB = 2+randn(2,100);
+>> size(classB)
+
+ans =
+
+     2   100
+
+>> figure; hold on;
+>> h1 = scatter(classA(1,:),classA(2,:),'ko','filled');
+>> h2 = scatter(classB(1,:),classB(2,:),'wo','filled');
+>> set([h1 h2],'MarkerEdgeColor',[.5 .5 .5]);
+>> legend([h1 h2],{'Class A' 'Class B'},'Location','NorthOutside');
+>> xlabel('Dimension 1');
+>> ylabel('Dimension 2');
+>> 
+>> 
+>> ax = axis;
+>> xvals = linspace(ax(1),ax(2),200);
+>> yvals = linspace(ax(3),ax(4),200);
+>> [xx,yy] = meshgrid(xvals,yvals);
+>> gridX = [xx(:) yy(:)];
+>> 
+>> 
+>> size(gridX)
+
+ans =
+
+       40000           2
+
+>> which glmfit -all 
+/Applications/matlab76/toolbox/stats/glmfit.m
+>> X = [classA(1,:)' classA(2,:)';
+     classB(1,:)' classB(2,:)'];
+>> y = [zeros(size(classA,2),1); ones(size(classB,2),1)];
+>> 
+>> paramsA = glmfit(X,y,'binomial','link','logit');
+>> paramsA
+
+paramsA =
+
+   -3.7999
+    1.2358
+    2.0728
+
+>> outputimageA = glmval(paramsA,gridX,'logit');
+>> outputimageA = reshape(outputimageA,[length(yvals) length(xvals)]);
+>> [d,hA] = contour(xvals,yvals,outputimageA,[.5 .5]);
+>> set(hA,'LineWidth',3,'LineColor',[0 0 1]);  % make the line thick and blue
+>> outputimageB = classify(gridX,X,y,'linear');
+>> outputimageB = reshape(outputimageB,[length(yvals) length(xvals)]);
+>> [d,hB] = contour(xvals,yvals,outputimageB,[.5 .5]);
+>> set(hB,'LineWidth',3,'LineColor',[0 1 0]);  % make the line thick and green
+>> centroidA = mean(classA,2);  % 2 x 1
+>> centroidA
+
+centroidA =
+
+   -0.0402
+    0.1525
+
+>> centroidB = mean(classB,2);  % 2 x 1
+>> centroidB
+
+centroidB =
+
+    2.0720
+    2.1188
+
+>> disttoA = sqrt(sum(bsxfun(@minus,gridX,centroidA').^2,2));
+>> disttoB = sqrt(sum(bsxfun(@minus,gridX,centroidB').^2,2));
+>> outputimageC = disttoA > disttoB;
+>> outputimageC = reshape(outputimageC,[length(yvals) length(xvals)]);
+>> [d,hC] = contour(xvals,yvals,outputimageC,[.5 .5]);
+>> set(hC,'LineWidth',3,'LineColor',[1 0 0]);  % make the line thick and red
+>> 
+>> axis equal
+>> legend([hA hB hC],{'logistic regression' ...
+                   'linear discriminant analysis (LDA)' ...
+                   'nearest-prototype classification'}, ...
+       'Location','NorthOutside');
+>> 
